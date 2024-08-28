@@ -264,7 +264,7 @@ export const assembleAuctionHausShamanParams = ({
   const auctionHausShamanParams = encodeValues(
     ["uint256", "address", "uint256", "address"],
     [
-      Number(endDateTime),
+      endDateTime.toString(),
       captain as string,
       captainReward as string,
       nounsAuctionHouse as string,
