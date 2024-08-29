@@ -19,6 +19,10 @@ export const ShamanAddress = (props: Buildable<Field>) => {
   const saltNonce = watch("saltNonce");
   const baalAddress = watch("calculatedDAOAddress");
   const startDate = watch("startDate");
+  const captain = watch("captain");
+  const captainReward = watch("captainReward");
+
+
 
   useEffect(() => {
     // if we don't have all the values we need, return early
@@ -62,7 +66,7 @@ export const ShamanAddress = (props: Buildable<Field>) => {
       );
       getShamanAddress();
     }
-  }, [baalAddress, saltNonce, chainId, startDate]);
+  }, [baalAddress, saltNonce, chainId, startDate, captain, captainReward]);
 
   return null;
 };

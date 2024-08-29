@@ -30,7 +30,7 @@ export const CURATOR_CONTRACTS: KeychainList = {
     "0x2105": "0x2f3637757875414c938EF80A5aD197aAaCDaA924",
   },
   AUCTION_HAUS_SINGLETON: {
-    "0xaa36a7": "0xd75435f030f93ee0f4773c2acfbae37b1d211531",
+    "0xaa36a7": "0x1fBf81d68f781F2bbabB64dfe35b39F9B8BfcCb5",
     "0x1": "",
   }, // todo
   GOV_LOOT_SINGLETON: {
