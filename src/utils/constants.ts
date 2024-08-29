@@ -30,7 +30,7 @@ export const CURATOR_CONTRACTS: KeychainList = {
     "0x2105": "0x2f3637757875414c938EF80A5aD197aAaCDaA924",
   },
   AUCTION_HAUS_SINGLETON: {
-    "0xaa36a7": "0x1fBf81d68f781F2bbabB64dfe35b39F9B8BfcCb5",
+    "0xaa36a7": "0x73EE3aEF94215C360C246fe6e3BFcdB129d091B6",
     "0x1": "",
   }, // todo
   GOV_LOOT_SINGLETON: {
@@ -101,6 +101,12 @@ export const UNISWAP_URL: Keychain<string> = {
   "0xaa36a7": "https://app.uniswap.org/explore/pools/sepolia/",
   "0x2105": "https://app.uniswap.org/explore/pools/base/",
   "0xa": "https://app.uniswap.org/explore/pools/optimism",
+};
+
+export const NOUNS_URL: Keychain<string> = {
+  "0xaa36a7": "https://sepolia.etherscan.io/address/0xc0af40e8932ad93ed3237dd0c3fe1efd698c1efe#writeProxyContract",
+  "0x2105": "",
+  "0x1": "https://nouns.wtf/",
 };
 
 export const supportedNetworks = import.meta.env.DEV

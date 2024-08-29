@@ -6,6 +6,8 @@ import {
 
   DataIndicator,
 
+  Link,
+
   ParLg,
   ParMd,
 } from "@daohaus/ui";
@@ -13,7 +15,7 @@ import { BigH1Blue } from "../Layout/Layout";
 import { Actions, DetailItem, DetailsContainer, Wrapper } from "./flipables.styles";
 import { useYeeter } from "../../hooks/useYeeter";
 import { useNounsAuctionHouse } from "../../hooks/useNounsAuctionHouse";
-import { CURATOR_CONTRACTS } from "../../utils/constants";
+import { CURATOR_CONTRACTS, NOUNS_URL } from "../../utils/constants";
 import { formatShortDateTimeFromSeconds, formatValueTo, fromWei, truncateAddress } from "@daohaus/utils";
 import { useMemo } from "react";
 import { ButtonRouterLink } from "../ButtonRouterLink";
@@ -31,6 +33,8 @@ export const CurrentAuctionOverview = ({
 
 
   // const { multiplier, minTribute } = useYeeter({ chainId: daoChain as ValidNetwork, daoId: daoId, shamanAddress: yeeterId });
+  console.log("&&&&&&&&&&&&&& yeeterId", yeeterId, daoId);
+
 
   const { auction } = useNounsAuctionHouse({
     chainId: daoChain,
@@ -41,7 +45,7 @@ export const CurrentAuctionOverview = ({
 
   const memoizedAuction = useMemo(() => auction, [auction]);
 
-  if (!memoizedAuction) {
+  if (!memoizedAuction || !yeeterId || !daoId) {
     return null;
   }
 
@@ -69,11 +73,12 @@ export const CurrentAuctionOverview = ({
 
         <Actions>
           {memoizedAuction.endTime < Date.now() / 1000 ?(
-                      <ButtonRouterLink
-                      to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/join`}
+        
+                      <Link
+                      href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
                     >
-                      AUCTION ENDED
-                    </ButtonRouterLink>) :
+                      AUCTION ENDED (SETTLE)
+                    </Link>) :
                       (<ButtonRouterLink
                       to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/bid`}
                     >

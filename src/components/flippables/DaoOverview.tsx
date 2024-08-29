@@ -43,7 +43,7 @@ export const TokenOverview = ({
     avatarImg: dao?.avatarImg,
   };
 
-  if (!metadata || !dao) {
+  if (!metadata || !dao || !yeeterId) {
     return;
   }
 
@@ -63,6 +63,7 @@ export const TokenOverview = ({
         </DetailItem>
 
         <Actions>
+
         <ButtonRouterLink
             to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/share`}
           >

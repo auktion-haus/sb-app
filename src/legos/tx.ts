@@ -24,9 +24,6 @@ export const APP_TX = {
     args: [
       ".formValues.maxBid"
     ],
-    overrides: {
-      value: ".formValues.maxBid",
-    },
   },
   CAPTAIN_DELEGATE: {
     id: "CAPTAIN_DELEGATE",

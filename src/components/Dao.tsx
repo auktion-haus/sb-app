@@ -40,7 +40,7 @@ const Dao = ({
 
   const { auctionHausShaman } = useAuctionHaus(auctionHausData);
 
-  console.log("dao render", { daoId, daoChain, proposalId, memberAddress, yeeterId });
+  console.log("dao render", { daoId, daoChain, proposalId, memberAddress, yeeterId, auctionHausShaman });
 
   return (
     <DHLayout2 leftNav={<Brand />}>

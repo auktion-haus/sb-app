@@ -151,6 +151,7 @@ export function Yeet() {
                 <CurrentAuctionOverview
                   daoId={daoId}
                   daoChain={daoChain}
+                  yeeterId={shamanAddress}
                 />
 
               )}
