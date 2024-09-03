@@ -131,7 +131,7 @@ export const DEFAULT_CHAIN_ID_DEV = "0xaa36a7";
 export const DEFAULT_CHAIN_ID_PROD = "0x1";
 export const DEFAULT_CHAIN_ID = import.meta.env.DEV
   ? DEFAULT_CHAIN_ID_DEV
-  : DEFAULT_CHAIN_ID_PROD;
+  : DEFAULT_CHAIN_ID_DEV; // DEFAULT_CHAIN_ID_PROD;
 
 export const CHAIN_OBJ: {
   [key: string]: Chain;
@@ -166,7 +166,7 @@ export const DEFAULT_YEETER_VALUES_DEV = {
     "0xD0f8720846890a7961945261FE5012E4cA39918e",
     "0x4a9a27d614a74ee5524909ca27bdbcbb7ed3b315",
   ], // yeeter team, daohaus eco fund
-  feeAmounts: ["5000", "5000"], // .5% fees
+  feeAmounts: ["15000", "15000"], // 1.5% fees
   multiplier: "10000",
   minThresholdGoal: POINT_O_ONE_ETH,
 };
@@ -176,13 +176,13 @@ export const DEFAULT_YEETER_VALUES_PROD = {
     "0xD0f8720846890a7961945261FE5012E4cA39918e",
     "0x4a9a27d614a74ee5524909ca27bdbcbb7ed3b315",
   ], // yeeter team, daohaus eco fund
-  feeAmounts: ["5000", "5000"], // .5% fees
+  feeAmounts: ["15000", "15000"], // 1.5% fees
   multiplier: "10000",
   minThresholdGoal: GOAL_ETH,
 };
 
-export const DEFAULT_DURATION_PROD = 48 * 60 * 60; // 48 hours
-export const DEFAULT_DURATION_DEV = 48 * 60 * 60; // 48 hours // 10 * 60; // 10 minutes
+export const DEFAULT_DURATION_PROD = (30*24) * 60 * 60; // 30 days
+export const DEFAULT_DURATION_DEV = (7*24) * 60 * 60; // 7 days
 
 const STATUS_WINDOW_LENGTH_DEV = 3 * 60; // 3 mins
 const STATUS_WINDOW_LENGTH_PROD = 2 * 60 * 60; // 2 hrs
@@ -198,9 +198,9 @@ export const DEFAULT_SUMMON_VALUES_DEV = {
   votingPeriodInSeconds: 200,
   gracePeriodInSeconds: 6,
   newOffering: POINT_OO_ONE_ETH,
-  quorum: "25",
+  quorum: "66",
   sponsorThreshold: SPONSOR_THRESHOLD,
-  minRetention: "66",
+  minRetention: "1",
   votingTransferable: false,
   nvTransferable: true,
 };
@@ -208,9 +208,9 @@ export const DEFAULT_SUMMON_VALUES_PROD = {
   votingPeriodInSeconds: 259200,
   gracePeriodInSeconds: 172800,
   newOffering: POINT_O_ONE_ETH,
-  quorum: "25",
+  quorum: "66",
   sponsorThreshold: SPONSOR_THRESHOLD,
-  minRetention: "66",
+  minRetention: "1",
   votingTransferable: false,
   nvTransferable: true,
 };
@@ -224,11 +224,11 @@ export const DEFAULT_TARGET_DAO = import.meta.env.DEV
 
 export const DEFAULT_YEETER_VALUES = import.meta.env.DEV
   ? DEFAULT_YEETER_VALUES_DEV
-  : DEFAULT_YEETER_VALUES_PROD;
+  : DEFAULT_YEETER_VALUES_DEV; // DEFAULT_YEETER_VALUES_PROD;
 
 export const DEFAULT_DURATION = import.meta.env.DEV
   ? DEFAULT_DURATION_DEV
-  : DEFAULT_DURATION_PROD;
+  : DEFAULT_DURATION_DEV; //DEFAULT_DURATION_PROD;
 
 export const STATUS_WINDOW_LENGTH = import.meta.env.DEV
   ? STATUS_WINDOW_LENGTH_DEV
@@ -236,4 +236,4 @@ export const STATUS_WINDOW_LENGTH = import.meta.env.DEV
 
 export const DEFAULT_SUMMON_VALUES = import.meta.env.DEV
   ? DEFAULT_SUMMON_VALUES_DEV
-  : DEFAULT_SUMMON_VALUES_PROD;
+  : DEFAULT_SUMMON_VALUES_DEV; // DEFAULT_SUMMON_VALUES_PROD;
