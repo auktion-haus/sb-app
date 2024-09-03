@@ -69,7 +69,7 @@ export function Yeet() {
 
   const { dao } = useDaoData({ daoId, daoChain });
 
-  const { auction } = useNounsAuctionHouse({
+  const { auction  } = useNounsAuctionHouse({
     chainId: daoChain,
     daoId,
     auctionHouseAddress: CURATOR_CONTRACTS.NOUNS_AUCTION_HOUSE[daoChain as ValidNetwork],

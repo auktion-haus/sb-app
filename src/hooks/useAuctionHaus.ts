@@ -36,6 +36,7 @@ export const useAuctionHaus = ({
       let auctionHausShaman,
         endTime,
         captain,
+        captainsReward,
         lastBidAmount,
         lastBidTokenId;
 
@@ -64,6 +65,12 @@ export const useAuctionHaus = ({
             functionName: "captain",
           })) as string;
 
+          captainsReward = (await publicClient.readContract({
+            address: shamanAddresses[i] as `0x${string}`,
+            abi: auctionHausShamanAbi,
+            functionName: "captainsReward",
+          })) as string;
+
           lastBidAmount = (await publicClient.readContract({
             address: shamanAddresses[i] as `0x${string}`,
             abi: auctionHausShamanAbi,
@@ -85,6 +92,7 @@ export const useAuctionHaus = ({
         auctionHausShaman,
         endTime,
         captain,
+        captainsReward,
         lastBidAmount,
         lastBidTokenId,
       };

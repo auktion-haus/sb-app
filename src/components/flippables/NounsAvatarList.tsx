@@ -1,6 +1,6 @@
 import { ValidNetwork } from '@daohaus/keychain-utils';
 import { MolochV3Dao } from '@daohaus/moloch-v3-data';
-import { ProfileAvatar } from '@daohaus/ui';
+import { ProfileAvatar, Tooltip } from '@daohaus/ui';
 import React from 'react';
 import styled from 'styled-components';
 import { useTreasury } from '../../hooks/useTreasury';
@@ -29,6 +29,13 @@ const AvatarWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+const TooltipContent = styled.div`
+  background-color: ${({ theme }) => theme.info.step12};
+  color: ${({ theme }) => theme.info.step1};
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 `;
 
 interface AvatarListProps {
@@ -70,7 +77,9 @@ const NounsAvatarList: React.FC<AvatarListProps> = ({
       {nouns.length === 0 && <p>None yet</p>}
       {nouns.map((tokenId, index) => (
         <AvatarWrapper key={index}>
-          <NounsImage nounId={tokenId.toString()} />
+          <Tooltip content={(<TooltipContent>Token Id: {tokenId.toString()}</TooltipContent>)} 
+          triggerEl={<NounsImage nounId={tokenId.toString()} />} > 
+          </Tooltip>
         </AvatarWrapper>
       ))}
     </AvatarListWrapper>

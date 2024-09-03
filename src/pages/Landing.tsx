@@ -78,10 +78,6 @@ const Landing = () => {
 
   const { address, chainId } = useDHConnect();
 
-  const { ragequits } = useRagequits({
-    chainId: DEFAULT_CHAIN_ID,
-  });
-
 
   useEffect(() => {
     let shouldUpdate = true;
@@ -215,13 +211,13 @@ const Landing = () => {
                     <ParMd>Members: {dao.activeMemberCount}</ParMd>
                   </DaoInfo>
                   <DaoActions>
-                    <LinkButton to={`/molochv3/${chainId}/${dao.id}/${dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress}/join`}>
+                    <LinkButton to={`/molochv3/${DEFAULT_CHAIN_ID}/${dao.id}/${dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress}/join`}>
                       <Button variant="outline" size="md">
                         YEET TO JOIN
                       </Button>
                     </LinkButton>
 
-                    <LinkButton to={`/molochv3/${chainId}/${dao.id}/${dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress}`}>
+                    <LinkButton to={`/molochv3/${DEFAULT_CHAIN_ID}/${dao.id}/${dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress}`}>
                       <Button variant="outline" size="md">
                         DASHBOARD
                       </Button>

@@ -64,25 +64,25 @@ export const CurrentAuctionOverview = ({
           <ParMd>BIDDER:</ParMd>
           <AddressDisplay address={memoizedAuction.bidder} truncate copy />
           {memoizedAuction.endTime < Date.now() / 1000 ? (<Link
-                      href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
-                    >
-                      AUCTION ENDED (SETTLE)
-                    </Link>) : <ParMd>ENDS: {formatShortDateTimeFromSeconds(memoizedAuction.endTime.toString())}</ParMd>}
+            href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
+          >
+            AUCTION ENDED (SETTLE)
+          </Link>) : <ParMd>ENDS: {formatShortDateTimeFromSeconds(memoizedAuction.endTime.toString())}</ParMd>}
         </DetailItem>
 
         <Actions>
-          {memoizedAuction.endTime < Date.now() / 1000 ?(
-        
-                      <Link
-                      href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
-                    >
-                      VIEW
-                    </Link>) :
-                      (<ButtonRouterLink
-                      to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/bid`}
-                    >
-                      CAPTAIN: NEW BID
-                    </ButtonRouterLink>)}
+          {memoizedAuction.endTime < Date.now() / 1000 ? (
+
+            <Link
+              href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
+            >
+              VIEW
+            </Link>) :
+            (<ButtonRouterLink
+              to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/bid`}
+            >
+              CAPTAIN: NEW BID
+            </ButtonRouterLink>)}
         </Actions>
       </DetailsContainer>
 

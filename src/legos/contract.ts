@@ -33,7 +33,7 @@ export const APP_CONTRACT: Record<string, ContractLego> = {
     abi: auctionHausShamanAbi,
     targetAddress: ".auctionHausShaman",
   },
-  EXIT_DAO: {
+  CURRENT_DAO: {
     type: "static",
     contractName: "Baal",
     abi: LOCAL_ABI.BAAL,

@@ -1,24 +1,28 @@
 import styled from "styled-components";
 
-const CardImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
+
 
 export const NounsImage = ({
   nounId,
   backupSrc,
+  size
 
 }: {
   nounId: string;
   backupSrc?: string;
+  size?: string;
 }) => {
 
 
   if (!nounId) {
     return;
   }
+
+  const CardImage = styled.img`
+  width: ${size || "100"}%;
+  height: ${size || "100"}%;
+  object-fit: cover;
+`;
 
   return (
     <CardImage src={`https://noun.pics/${nounId}.jpg` || backupSrc} alt={"current Auction"} />

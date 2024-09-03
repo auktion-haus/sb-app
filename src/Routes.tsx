@@ -22,6 +22,7 @@ import { ShareForm } from "./components/forms/ShareForm";
 import { CommentForm } from "./components/forms/CommentForm";
 import { CaptainNewBidForm } from "./components/forms/CaptainNewBid";
 import { CaptainDelegateForm } from "./components/forms/CaptainDelegate";
+import { ProposeNewCaptainForm } from "./components/forms/ProposeCaptain";
 
 export const Routes = ({
   setDaoChainId,
@@ -60,6 +61,8 @@ export const Routes = ({
         <Route path={`:yeeterId/comment`} element={<CommentForm />} />
         <Route path={`:yeeterId/bid`} element={<CaptainNewBidForm />} />
         <Route path={`:yeeterId/delegate`} element={<CaptainDelegateForm />} />
+        <Route path={`:yeeterId/new-captain`} element={<ProposeNewCaptainForm />} />
+
 
 
 

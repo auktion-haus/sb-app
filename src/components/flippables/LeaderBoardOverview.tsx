@@ -23,6 +23,7 @@ import { formatValueTo, fromWei, ZERO_ADDRESS } from "@daohaus/utils";
 import { useAuctionHaus } from "../../hooks/useAuctionHaus";
 import { MolochV3Dao } from "@daohaus/moloch-v3-data";
 import { useMemo } from "react";
+import { ButtonRouterLink } from "../ButtonRouterLink";
 
 
 const LeaderBoard = styled.div`
@@ -83,7 +84,8 @@ export const LeaderBoardOverview = ({
         <LeaderBoard>
 
 
-          {members.map((member, index) => (
+          {members.sort((a, b) => Number(b.shares) - Number(a.shares)).slice(0, 5)
+          .map((member, index) => (
             <LeaderBoardItem key={index}>
               <ParSm>{formatValueTo({
                 value: fromWei(member.shares.toString()),
@@ -107,9 +109,11 @@ export const LeaderBoardOverview = ({
           {memoizedCaptainProfile?.address && <AddressDisplay address={memoizedCaptainProfile.address} truncate copy />}
         </DetailItem>)}
         <Actions>
-          <Button size="lg" variant="ghost">
+        <ButtonRouterLink
+            to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/new-captain`}
+          >
             PROPOSE NEW CAPTAIN
-          </Button>
+          </ButtonRouterLink>
 
         </Actions>
       </DetailsContainer>

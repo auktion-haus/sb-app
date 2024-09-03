@@ -44,17 +44,24 @@ export const APP_FORM: Record<string, CustomFormLego> = {
       },
     ],
   },
-  EXIT_PRESALE_FORM: {
-    id: "EXIT_PRESALE",
-    title: "Exit Presale",
-    description: "Exit presale and lose your deposit",
-    submitButtonText: "JEET",
+  NEW_CAPTAIN_PROPOSAL_FORM: {
+    id: "NEW_CAPTAIN_PROPOSAL",
+    title: "New Captain",
+    description: "Propose a new captain for the DAO",
+    submitButtonText: "PROPOSE",
     requiredFields: {
-      amount: true,
+      captain: true,
     },
     log: true,
-    tx: APP_TX.EXIT_PRESALE as TXLego,
-    fields: [],
+    tx: APP_TX.PROPOSE_NEW_CAPTAIN as TXLego,
+    fields: [
+      {
+        id: "captain",
+        type: "input",
+        label: "New Captain Address",
+        placeholder: "0x1234...5678",
+      },
+    ],
   },
   EXECUTE_LP_FORM: {
     id: "EXECUTE_LP",

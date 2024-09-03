@@ -42,6 +42,7 @@ export const ProposalOverview = ({
     daoId: daoId
   });
 
+  console.log("proposals", proposals);
 
 
   return (
@@ -50,14 +51,16 @@ export const ProposalOverview = ({
       <DetailsContainer>
         <BigH1Blue>Proposals</BigH1Blue>
         <DetailItem>
-          <ParLg>Proposals</ParLg>
+          <ParLg>Total Proposals:</ParLg>
           <ParMd>{!proposals.length ? "no proposals yet" : proposals.length}</ParMd>
         </DetailItem>
-
-        {proposals.filter((prop) => prop.status == 'active').map((proposal) => (
+        {proposals.filter((prop) => prop.status == 'Voting').length ? (<ParLg>In Voting:</ParLg>) : (<ParLg>None in Voting</ParLg>)}
+        {proposals.filter((prop) => prop.status == 'Voting').map((proposal) => (
           <DetailItem key={proposal.proposalId}>
-            <ParLg>{proposal.title}</ParLg>
-            <ParMd>{proposal.details}</ParMd>
+            <ParLg>{proposal.proposalId}: {proposal.title}</ParLg>
+            <ParMd>{proposal.description}</ParMd>
+            <ParMd>STATUS: {proposal.status}</ParMd>
+
           </DetailItem>
         ))}
         <Actions>

@@ -15,6 +15,8 @@ import { BigH1Blue } from "../Layout/Layout";
 import { Actions, DetailItem, DetailsContainer, SimpleRow, StyledDialogContent, Wrapper } from "./flipables.styles";
 import { useAuctionHaus } from "../../hooks/useAuctionHaus";
 import { MolochV3Dao } from "@daohaus/moloch-v3-data";
+import { NounsImage } from "./NounsImage";
+import { formatValueTo, fromWei } from "@daohaus/utils";
 
 
 
@@ -61,13 +63,17 @@ export const LastBidOverview = ({
 
             <DetailItem>
               <ParLg>TokenId {lastBidTokenId?.toString()}</ParLg>
-              <Avatar size="xl" src={"https://hackmd.io/_uploads/S13S8BUs0.png"} />
+              <NounsImage size="50" nounId={lastBidTokenId?.toString() || "85"} />
 
             </DetailItem>
             <DetailItem>
               <Label>Amount</Label>
               <ParMd>
-                {lastBidAmount}
+                {formatValueTo({
+                  value: fromWei(lastBidAmount?.toString() || "0"),
+                  decimals: 5,
+                  format: "numberShort",
+                })}
               </ParMd>
             </DetailItem>
 
