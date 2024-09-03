@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["feat/deploy"]
+    branches: ["feat/auction-haus"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -48,6 +48,9 @@ jobs:
           VITE_SEPOLIA_RPC: ${{ secrets.VITE_SEPOLIA_RPC }}
           VITE_BASE_RPC: ${{ secrets.VITE_BASE_RPC }}
           VITE_YEETER_GRAPH_API_KEY: ${{ secrets.VITE_YEETER_GRAPH_API_KEY }}
+          VITE_ETHEREUM_ALCHEMY_KEY: ${{ secrets.VITE_ETHEREUM_ALCHEMY_KEY }}
+          VITE_OPTIMISM_ALCHEMY_KEY: ${{ secrets.VITE_OPTIMISM_ALCHEMY_KEY }}
+          VITE_EXPLORER_KEY: ${{ secrets.VITE_EXPLORER_KEY }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

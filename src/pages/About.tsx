@@ -9,7 +9,7 @@ import {
 } from "../components/Layout/Layout";
 import { WideColumnLayout } from "../components/Layout/WideColumnLayout";
 
-import BallGif from "../assets/ball-gif.gif";
+import orangeGlasses from "../assets/orange160px.png";
 
 const SectionContainer = styled.div`
   display: flex;
@@ -61,21 +61,25 @@ const About = () => {
             </ParLg>
             <SimpleCol>
               <Bullet>
-                <img src={BallGif} height="50px" />
+                <img src={orangeGlasses} height="50px" />
                 <ParLg>
-                  Speedball eliminates insider manipulation by ensuring fair and
-                  open participation
+                  Auction Haus is a decentralized auction platform to particpant in the Nouns DAO auctions.
                 </ParLg>
               </Bullet>
               <Bullet>
-                <img src={BallGif} height="50px" />
+                <img src={orangeGlasses} height="50px" />
                 <ParLg>
-                  Speedball redistributes liquidity provider (LP) fees to a DAO
-                  controlled by all token holders
+                  Tokenize a Nouns "Block" so a group can participate in the DAO.
                 </ParLg>
               </Bullet>
               <Bullet>
-                <img src={BallGif} height="50px" />
+                <img src={orangeGlasses} height="50px" />
+                <ParLg>
+                  Created for the MetaCartel Fam.
+                </ParLg>
+              </Bullet>
+              <Bullet>
+                <img src={orangeGlasses} height="50px" />
                 <a href="/speedball.pdf" download>
                   <DataLg>Download Whitepaper</DataLg>
                 </a>
@@ -85,76 +89,38 @@ const About = () => {
 
           <SectionContainer>
             <div className="text">
-              <H4>LAUNCH TOKEN PRESALE</H4>
+              <H4>LAUNCH YOUR HAUDS</H4>
               <ParMd>
-                Launch the token presale and LP formation contracts in a single
-                transaction. A 48 presale window will be set up with a minimum
-                goal of 3 ETH. Contributors receive non-transferable tokens
-                during the presale, but can exit at any time by ragequtting
-                tokens in return for contributed ETH minus fees.
+                Start a Auction Haus for you and your friends
               </ParMd>
               <ParMd>
-                Less than 1% fee on presales contributes to the protocol's
-                treasury. A 9% fee acts as a deposit to ensure commitment. If a
-                presale does not meet its goal or a participant exits early,
-                these fees are deposited into a rewards pool for future
-                presales.
+                Select a Captain to delegate auction responsibilities and manage votes.
               </ParMd>
             </div>
             <div className="image">
-              <img src={BallGif} height="300px" />
-            </div>
-          </SectionContainer>
-          <SectionContainer>
-            <div className="image">
-              <img src={BallGif} height="300px" />
-            </div>
-            <div className="text">
-              <H4>FORM LP</H4>
-              <ParMd>
-                If the goal is met, the token becomes transferable and an
-                equivalent amount of tokens is minted alongside pooled funds to
-                form a liquidity pair on Uniswap V3.
-              </ParMd>
-              <ParMd>
-                Reward funds are added into the LP at launch, creating a higher
-                initial price than the presale, rewarding participants and
-                introducing volatility in the market.
-              </ParMd>
+              <img src={orangeGlasses} height="100px" />
             </div>
           </SectionContainer>
           <SectionContainer>
             <div className="text">
               <H4>DAO</H4>
               <ParMd>
-                Each token has governance over a DAO treasury. 1% liquidity pool
-                fees are directed to the DAO treasury, funding community
-                initiatives.
-              </ParMd>
-              <ParMd>
-                Participants have the freedom to exit by burning tokens,
-                receiving a proportional share of the accumulated LP fees.
-                Alternatively, tokens can be sold into the LP and not burnt.
+                Each token has governance over a DAO treasury. 
               </ParMd>
             </div>
             <div className="image">
-              <img src={BallGif} height="300px" />
+              <img src={orangeGlasses} height="100px" />
             </div>
           </SectionContainer>
           <SectionContainer>
             <div className="image">
-              <img src={BallGif} height="300px" />
+              <img src={orangeGlasses} height="100px" />
             </div>
             <div className="text">
-              <H4>BALLER HIGHLIGHTS</H4>
+              <H4>AUCTION HAUS HIGHLIGHTS</H4>
               <ParMd>
                 Fully On-chain: The entire process is executed on-chain,
                 ensuring transparency and security.
-              </ParMd>
-              <ParMd>
-                Hyperstructure DAO: The protocol itself will be governed by a
-                DAO using the same launch mechanism and will manage reward
-                distribution schedules.
               </ParMd>
 
               <a href="/speedball.pdf" download>

@@ -144,9 +144,9 @@ const Summon = () => {
                             <ContractInfoItem key={idx}>
                               {shaman.permissions === "2" ? (
                                 <YeeterItem>
-                                  <ParLg>Token Presale</ParLg>
+                                  <ParLg>AuctionHaus</ParLg>
                                   <ParMd>
-                                    Participate in raid here. Share this link to
+                                    Join the haus here. Share this link to
                                     others interested{" "}
                                   </ParMd>
                                   <ParMd>
@@ -155,7 +155,7 @@ const Summon = () => {
                                   <StyledRouterLink
                                     to={`/molochv3/${chainId}/${pollResult?.data?.dao?.id}/${shaman.shamanAddress}`}
                                   >
-                                    <ParSm>Token Page</ParSm>
+                                    <ParSm>Dashboard</ParSm>
                                   </StyledRouterLink>
                                 </YeeterItem>
                               ) : (

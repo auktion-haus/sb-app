@@ -25,22 +25,17 @@ export const CurrentAuctionOverview = ({
   daoId,
   daoChain,
   yeeterId,
+  auction
 }: {
   daoId: string;
   daoChain: ValidNetwork;
   yeeterId?: string;
+  auction: any;
 }) => {
 
 
   // const { multiplier, minTribute } = useYeeter({ chainId: daoChain as ValidNetwork, daoId: daoId, shamanAddress: yeeterId });
   console.log("&&&&&&&&&&&&&& yeeterId", yeeterId, daoId);
-
-
-  const { auction } = useNounsAuctionHouse({
-    chainId: daoChain,
-    daoId,
-    auctionHouseAddress: CURATOR_CONTRACTS.NOUNS_AUCTION_HOUSE[daoChain as ValidNetwork],
-  })
 
 
   const memoizedAuction = useMemo(() => auction, [auction]);
@@ -68,7 +63,11 @@ export const CurrentAuctionOverview = ({
           />
           <ParMd>BIDDER:</ParMd>
           <AddressDisplay address={memoizedAuction.bidder} truncate copy />
-          {memoizedAuction.endTime < Date.now() / 1000 ? <ParMd>ENDED</ParMd> : <ParMd>ENDS: {formatShortDateTimeFromSeconds(memoizedAuction.endTime.toString())}</ParMd>}
+          {memoizedAuction.endTime < Date.now() / 1000 ? (<Link
+                      href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
+                    >
+                      AUCTION ENDED (SETTLE)
+                    </Link>) : <ParMd>ENDS: {formatShortDateTimeFromSeconds(memoizedAuction.endTime.toString())}</ParMd>}
         </DetailItem>
 
         <Actions>
@@ -77,7 +76,7 @@ export const CurrentAuctionOverview = ({
                       <Link
                       href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
                     >
-                      AUCTION ENDED (SETTLE)
+                      VIEW
                     </Link>) :
                       (<ButtonRouterLink
                       to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/bid`}

@@ -69,6 +69,12 @@ export function Yeet() {
 
   const { dao } = useDaoData({ daoId, daoChain });
 
+  const { auction } = useNounsAuctionHouse({
+    chainId: daoChain,
+    daoId,
+    auctionHouseAddress: CURATOR_CONTRACTS.NOUNS_AUCTION_HOUSE[daoChain as ValidNetwork],
+  })
+
   if (!dao) return null;
 
 
@@ -144,7 +150,7 @@ export function Yeet() {
 
             <FlippableCard
               frontComponentLeft={() => (
-                <NounsImage nounId="85" />
+                <NounsImage nounId={auction?.nounId.toString() || "85"} />
               )}
               frontComponentRight={() => (
 
@@ -152,6 +158,7 @@ export function Yeet() {
                   daoId={daoId}
                   daoChain={daoChain}
                   yeeterId={shamanAddress}
+                  auction={auction}
                 />
 
               )}

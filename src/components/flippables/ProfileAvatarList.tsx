@@ -39,7 +39,7 @@ const ProfileAvatarList: React.FC = () => {
       {members.length === 0 && <p>None yet</p>}
       {members.map((member, index) => (
         <AvatarWrapper key={index}>
-          <ProfileAvatar address={member.memberAddress} alt="thing" />
+          <ProfileAvatar size='md' address={member.memberAddress} alt="thing" />
         </AvatarWrapper>
       ))}
     </AvatarListWrapper>

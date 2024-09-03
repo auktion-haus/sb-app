@@ -7,7 +7,7 @@ import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
 import { DEFAULT_CHAIN_ID } from "../../utils/constants";
-import { Button, ParMd } from "@daohaus/ui";
+import { Button, ParLg, ParMd } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
 import { useCurrentDao, useDaoData } from "@daohaus/moloch-v3-hooks";
@@ -41,64 +41,71 @@ const FormWrapper = styled.div`
     `;
 
 export const JoinForm = () => {
-    const { daoChain, daoId } = useCurrentDao();
-    const { shamanAddress } = useCurrentYeeter();
-  
-    if (!daoId || !daoChain || !shamanAddress) return null;
+  const { daoChain, daoId } = useCurrentDao();
+  const { shamanAddress } = useCurrentYeeter();
+  const { dao } = useDaoData({
+    daoId: daoId as string,
+    daoChain: daoChain as string,
+  });
 
-  
-    const [txSuccess, setTxSuccess] = useState(false);
-    const [pollSuccess, setPollSuccess] = useState<boolean>(false);
-    const [pollResult, setPollResult] = useState<YeeterItem | null>(null);
-  
-    const onFormComplete = useCallback((result: any) => {
-      console.log("result on success handle yeets", result);
-      setPollSuccess(true);
-      setPollResult(result);
-    }, []);
+  if (!daoId || !daoChain || !shamanAddress) return null;
 
 
-    return (
-        <FormWrapper>
-                          <BackButtonWrapper>
-                <ButtonRouterLink
-                  to={`/molochv3/${daoChain}/${daoId}/${shamanAddress}`}
-                >
-                  <ParMd>Back To Dashboard</ParMd>
-                </ButtonRouterLink>
-                </BackButtonWrapper>
-        {!pollSuccess && (
-            <>
-              <FormBuilder
-                form={APP_FORM.YEET_FORM}
-                customFields={AppFieldLookup}
-                targetNetwork={DEFAULT_CHAIN_ID}
-                submitButtonText="JOIN"
-                lifeCycleFns={{
-                  onPollSuccess: (result) => {
-                    console.log("poll success", result);
-                    onFormComplete(result);
-                  },
-                  onTxSuccess: (result) => {
-                    setTxSuccess(true);
-                  },
-                }}
-              />
+  const [txSuccess, setTxSuccess] = useState(false);
+  const [pollSuccess, setPollSuccess] = useState<boolean>(false);
+  const [pollResult, setPollResult] = useState<YeeterItem | null>(null);
 
-            </>
-          )}
-          {pollSuccess && (
-            <SuccessWrapper>
-              <ParMd>{`YEETED! I'm doing my part!`}</ParMd>
+  const onFormComplete = useCallback((result: any) => {
+    console.log("result on success handle yeets", result);
+    setPollSuccess(true);
+    setPollResult(result);
+  }, []);
 
-                <ButtonRouterLink
-                  to={`/molochv3/${daoChain}/${daoId}/${shamanAddress}`}
-                >
-                  <ParMd>See your YEET and others here</ParMd>
-                </ButtonRouterLink>
-            
-            </SuccessWrapper>
-          )}
-          </FormWrapper>
-    )
+
+  return (
+    <FormWrapper>
+      <BackButtonWrapper>
+        <ButtonRouterLink
+          to={`/molochv3/${daoChain}/${daoId}/${shamanAddress}`}
+        >
+          <ParMd>Back To Dashboard</ParMd>
+        </ButtonRouterLink>
+      </BackButtonWrapper>
+      <ParLg>Join the YEET</ParLg>
+      <ParLg>{dao && dao.name}</ParLg>
+
+      {!pollSuccess && (
+        <>
+          <FormBuilder
+            form={APP_FORM.YEET_FORM}
+            customFields={AppFieldLookup}
+            targetNetwork={DEFAULT_CHAIN_ID}
+            submitButtonText="JOIN"
+            lifeCycleFns={{
+              onPollSuccess: (result) => {
+                console.log("poll success", result);
+                onFormComplete(result);
+              },
+              onTxSuccess: (result) => {
+                setTxSuccess(true);
+              },
+            }}
+          />
+
+        </>
+      )}
+      {pollSuccess && (
+        <SuccessWrapper>
+          <ParMd>{`YEETED! I'm doing my part!`}</ParMd>
+
+          <ButtonRouterLink
+            to={`/molochv3/${daoChain}/${daoId}/${shamanAddress}`}
+          >
+            <ParMd>See your YEET and others here</ParMd>
+          </ButtonRouterLink>
+
+        </SuccessWrapper>
+      )}
+    </FormWrapper>
+  )
 }

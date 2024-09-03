@@ -40,6 +40,7 @@ export default ({ mode }) => {
         },
       },
     },
+    base: "/sb-app/",
     build: {
       target: ["es2020"],
     },
