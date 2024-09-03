@@ -9,7 +9,6 @@ export default ({ mode }) => {
     define: {
       "process.env": {
         NX_RIVET_KEY: process.env.VITE_RIVET_KEY,
-        NX_GOERLI_RPC: process.env.VITE_GOERLI_RPC,
         NX_SEPOLIA_RPC: process.env.VITE_SEPOLIA_RPC,
         NX_GRAPH_API_KEY_MAINNET: process.env.VITE_GRAPH_API_KEY_MAINNET,
         NX_INFURA_PROJECT_ID: process.env.VITE_INFURA_PROJECT_ID,
