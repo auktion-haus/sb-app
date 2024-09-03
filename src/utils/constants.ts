@@ -87,13 +87,13 @@ export const YEETER_GRAPH_URL: KEYCHAIN = {
 
 export const DH_GRAPH_URL: KEYCHAIN = {
   "0xaa36a7": `https://gateway-arbitrum.network.thegraph.com/api/${
-    import.meta.env.VITE_YEETER_GRAPH_API_KEY
+    import.meta.env.VITE_GRAPH_API_KEY_MAINNET
   }/subgraphs/id/3k93SNY5Y1r4YYWEuPY9mpCm2wnGoYDKRtk82QZJ3Kvw`,
   "0x2105": `https://gateway-arbitrum.network.thegraph.com/api/${
-    import.meta.env.VITE_YEETER_GRAPH_API_KEY
+    import.meta.env.VITE_GRAPH_API_KEY_MAINNET
   }/subgraphs/id/7yh4eHJ4qpHEiLPAk9BXhL5YgYrTrRE6gWy8x4oHyAqW`,
   "0x1": `https://gateway-arbitrum.network.thegraph.com/api/${
-    import.meta.env.VITE_YEETER_GRAPH_API_KEY
+    import.meta.env.VITE_GRAPH_API_KEY_MAINNET
   }/subgraphs/id/<subgraph_id>`,
 };
 
