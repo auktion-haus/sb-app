@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+interface CardImageProps {
+  size?: string;
+}
+
+const CardImage = styled.img<CardImageProps>`
+  width: ${(props) => props.size || "100"}%;
+  height: ${(props) => props.size || "100"}%;
+  object-fit: cover;
+`;
 
 
 export const NounsImage = ({
@@ -18,13 +27,8 @@ export const NounsImage = ({
     return;
   }
 
-  const CardImage = styled.img`
-  width: ${size || "100"}%;
-  height: ${size || "100"}%;
-  object-fit: cover;
-`;
 
   return (
-    <CardImage src={`https://noun.pics/${nounId}.jpg` || backupSrc} alt={"current Auction"} />
+    <CardImage size={size} src={`https://noun.pics/${nounId}.jpg` || backupSrc} alt={"current Auction"} />
   );
 };

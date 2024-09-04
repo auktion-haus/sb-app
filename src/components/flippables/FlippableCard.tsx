@@ -1,18 +1,26 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
+
+interface CardProps {
+  $bgcolor: string;
+}
+
+interface FlipCardProps {
+  $isflipped: boolean;
+}
 
 const GridItem = styled.div`
   perspective: 1000px;
   height: 50vh;
 `;
 
-const Card = styled.div<{ isflipped: string }>`
+const FlippableCardWrapper = styled.div<FlipCardProps>`
   width: 100%;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
-  transform: ${({ isflipped }) => (isflipped === 'true' ? 'rotateY(180deg)' : 'none')};
+  transform: ${({ $isflipped }) => ($isflipped ? 'rotateY(180deg)' : 'none')};
 `;
 
 const CardFace = styled.div`
@@ -22,9 +30,9 @@ const CardFace = styled.div`
   backface-visibility: hidden;
 `;
 
-const CardFront = styled(CardFace) <{ bgcolor?: string }>`
+const CardFront = styled(CardFace) <CardProps>`
   display: flex;
-  background-color: ${({ bgcolor }) => bgcolor};
+  background-color: ${({ $bgcolor }) => $bgcolor};
   width: 100%;
   height: 100%;
 `;
@@ -77,11 +85,12 @@ export const FlippableCard: React.FC<FlippableCardProps> = React.memo(
       setIsFlipped(prevState => !prevState);
     }, []);
 
+    const memoizedBgColor = useMemo(() => bg, [bg]);
+
     return (
       <GridItem>
-        <Card isflipped={isFlipped.toString()}>
-          <FlipButton onClick={handleFlip}><Triangle /></FlipButton>
-          <CardFront bgcolor={bg}>
+        <FlippableCardWrapper $isflipped={isFlipped}>
+          <CardFront $bgcolor={memoizedBgColor || 'transparent'}>
             <FrontComponentLeftWrapper>
               <FrontComponentLeft />
             </FrontComponentLeftWrapper>
@@ -92,7 +101,9 @@ export const FlippableCard: React.FC<FlippableCardProps> = React.memo(
           <CardBack>
             <BackComponent />
           </CardBack>
-        </Card>
+        </FlippableCardWrapper>
+        <FlipButton onClick={handleFlip}><Triangle /></FlipButton>
+
       </GridItem>
     );
   }
