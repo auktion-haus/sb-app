@@ -52,9 +52,10 @@ const ProfileAvatarList: React.FC = () => {
             value: fromWei(member.shares.toString()),
             decimals: 2,
             format: "numberShort",
-          })}<ExplorerLink chainId={DEFAULT_CHAIN_ID} address={member.memberAddress} /></TooltipContent>)} triggerEl={(<ProfileAvatar size='md' address={member.memberAddress} alt="thing" />)}>
+          })}<ExplorerLink chainId={DEFAULT_CHAIN_ID} address={member.memberAddress} /></TooltipContent>)} 
+          triggerEl={(<ProfileAvatar size='md' address={member.memberAddress} alt="thing" />)} />
 
-          </Tooltip>
+
         </AvatarWrapper>
       ))}
     </AvatarListWrapper>

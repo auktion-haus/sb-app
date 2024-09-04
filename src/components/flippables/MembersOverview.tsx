@@ -93,9 +93,9 @@ export const MembersOverview = ({
           </>)}
         </DetailItemBg>
         <DetailItem>
-          <Tooltip content={(<TooltipContent>Reward for captain action </TooltipContent>)} triggerEl={<ParMd>Captains Reward:</ParMd>}>
+          <Tooltip content={(<TooltipContent>Reward for captain action </TooltipContent>)} triggerEl={<ParMd>Captains Reward:</ParMd>} />
 
-          </Tooltip>
+
           <ParSm>{formatValueTo({
             value: fromWei(captainsReward?.toString() || "0"),
             decimals: 2,

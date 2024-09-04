@@ -78,8 +78,8 @@ const NounsAvatarList: React.FC<AvatarListProps> = ({
       {nouns.map((tokenId, index) => (
         <AvatarWrapper key={index}>
           <Tooltip content={(<TooltipContent>Token Id: {tokenId.toString()}</TooltipContent>)} 
-          triggerEl={<NounsImage nounId={tokenId.toString()} />} > 
-          </Tooltip>
+          triggerEl={<NounsImage nounId={tokenId.toString()} />} /> 
+
         </AvatarWrapper>
       ))}
     </AvatarListWrapper>
