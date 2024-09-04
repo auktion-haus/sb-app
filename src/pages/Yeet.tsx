@@ -63,26 +63,15 @@ const CardImage = styled.img`
 
 export function Yeet() {
   const { daoChain, daoId } = useCurrentDao();
-  const { shamanAddress } = useCurrentYeeter();
+  const { shamanAddress, auctionHausShamanData, auction } = useCurrentYeeter();
 
   if (!daoId || !daoChain || !shamanAddress) return null;
 
   const { dao } = useDaoData({ daoId, daoChain });
 
-  const { auction  } = useNounsAuctionHouse({
-    chainId: daoChain,
-    daoId,
-    auctionHouseAddress: CURATOR_CONTRACTS.NOUNS_AUCTION_HOUSE[daoChain as ValidNetwork],
-  })
 
   if (!dao) return null;
 
-
-  // const {membersMock} = useDaoMembers();
-
-  // console.log("dao", daoId)
-  
-  
 
 
   const membersMock = [
@@ -180,10 +169,8 @@ export function Yeet() {
               )}
               frontComponentRight={() => (
                 <MembersOverview
-                  yeeterId={shamanAddress}
-                  daoId={daoId}
-                  daoChain={daoChain}
-                  dao={dao}
+                  captain={auctionHausShamanData?.captain}
+                  captainsReward={auctionHausShamanData?.captainsReward}
                 />
 
               )}
@@ -192,7 +179,7 @@ export function Yeet() {
                   yeeterId={shamanAddress}
                   daoId={daoId}
                   daoChain={daoChain}
-                  dao={dao}
+                  captain={auctionHausShamanData?.captain}
                 />
 
               )}

@@ -35,8 +35,6 @@ export const CurrentAuctionOverview = ({
 
 
   // const { multiplier, minTribute } = useYeeter({ chainId: daoChain as ValidNetwork, daoId: daoId, shamanAddress: yeeterId });
-  console.log("&&&&&&&&&&&&&& yeeterId", yeeterId, daoId);
-
 
   const memoizedAuction = useMemo(() => auction, [auction]);
 

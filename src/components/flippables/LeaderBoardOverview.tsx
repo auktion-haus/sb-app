@@ -46,22 +46,17 @@ export const LeaderBoardOverview = ({
   yeeterId,
   daoId,
   daoChain,
-  dao
+  captain
 }: {
   yeeterId: string;
   daoId: string;
   daoChain: ValidNetwork;
-  dao: MolochV3Dao
+  captain?: string;
 }) => {
 
-
-
-  const { captain } = useAuctionHaus({
-    daoId,
-    yeeterShamanAddress: yeeterId,
-    chainId: daoChain,
-    daoShamans: dao?.shamen?.map((s) => s.shamanAddress),
-  });
+  if (!captain) {
+    return null;
+  }
 
   const memoizedCaptain = useMemo(() => captain, [captain]);
 

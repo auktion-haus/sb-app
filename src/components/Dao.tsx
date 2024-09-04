@@ -8,6 +8,9 @@ import { CurrentYeeterProvider } from "../contexts/CurrentYeeterContext";
 import { Brand } from "./Brand";
 import { DHLayout2 } from "./Layout/DhLayout";
 import { useAuctionHaus } from "../hooks/useAuctionHaus";
+import { useNounsAuctionHouse } from "../hooks/useNounsAuctionHouse";
+import { CURATOR_CONTRACTS } from "../utils/constants";
+import { ZERO_ADDRESS } from "@daohaus/utils";
 
 const Dao = ({
   daoId,
@@ -31,16 +34,21 @@ const Dao = ({
 
   const { dao } = useDaoData(daoData);
 
-  const auctionHausData = useMemo(() => ({
+  const auctionHausData = useAuctionHaus({
     daoId,
     yeeterShamanAddress: yeeterId,
     chainId: daoChain,
     daoShamans: dao?.shamen?.map((s) => s.shamanAddress),
-  }), [daoId, yeeterId, daoChain, dao?.shamen]);
+  });
 
-  const { auctionHausShaman } = useAuctionHaus(auctionHausData);
+  const { auction  } = useNounsAuctionHouse({
+    chainId: daoChain,
+    daoId,
+    auctionHouseAddress: CURATOR_CONTRACTS.NOUNS_AUCTION_HOUSE[daoChain as ValidNetwork] || ZERO_ADDRESS,
+  })
 
-  console.log("dao render", { daoId, daoChain, proposalId, memberAddress, yeeterId, auctionHausShaman });
+
+  console.log("dao render", { daoId, daoChain, proposalId, memberAddress, yeeterId, auctionHausData });
 
   return (
     <DHLayout2 leftNav={<Brand />}>
@@ -62,10 +70,10 @@ const Dao = ({
             dao,
             memberAddress: address,
             shamanAddress: yeeterId,
-            auctionHausShaman,
+            auctionHausShaman: auctionHausData.auctionHausShaman,
           }}
         >
-          <CurrentYeeterProvider shamanAddress={yeeterId}>
+          <CurrentYeeterProvider shamanAddress={yeeterId} auctionHausShamanData={auctionHausData} auction={auction}>
             <Outlet />
           </CurrentYeeterProvider>
         </TXBuilder>

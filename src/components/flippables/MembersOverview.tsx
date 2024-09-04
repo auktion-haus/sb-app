@@ -35,33 +35,19 @@ const TooltipContent = styled.div`
 
 
 export const MembersOverview = ({
-  yeeterId,
-  daoId,
-  daoChain,
-  dao
+  captain,
+  captainsReward,
 }: {
-  yeeterId: string;
-  daoId: string;
-  daoChain: ValidNetwork;
-  dao: MolochV3Dao
+  captain?: string;
+  captainsReward?: string;
 }) => {
 
-
-
-  // console.log("yeeterId", yeeterId);
-
-  const { captain, captainsReward } = useAuctionHaus({
-    daoId,
-    yeeterShamanAddress: yeeterId,
-    chainId: daoChain,
-    daoShamans: dao?.shamen?.map((s) => s.shamanAddress),
-  });
-
-
-  const memoizedCaptain = useMemo(() => captain, [captain]);
+  if (!captain || !captainsReward) {
+    return null;
+  }
 
   const { profile: captainProfile } = useProfile({
-    address: memoizedCaptain || ZERO_ADDRESS
+    address: captain || ZERO_ADDRESS
   })
 
   const memoizedCaptainProfile = useMemo(() => captainProfile, [captainProfile]);
@@ -70,11 +56,6 @@ export const MembersOverview = ({
   if (!memoizedCaptainProfile) {
     return;
   }
-
-  // console.log("profile", captainMember?.memberAddress, captain, memoizedCaptainProfile)
-  // console.log("captain", captain);
-  // console.log("member", member);
-
   return (
     <Wrapper>
 

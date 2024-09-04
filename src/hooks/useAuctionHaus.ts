@@ -10,6 +10,14 @@ import {
 import { createPublicClient, http } from "viem";
 import auctionHausShamanAbi from "../abis/auctionHausShaman.json";
 
+export type AuctionHausData = {
+  auctionHausShaman?: string;
+  endTime?: string;
+  captain?: string;
+  captainsReward?: string;
+  lastBidAmount?: string;
+  lastBidTokenId?: string;
+};
 
 export const useAuctionHaus = ({
   chainId,
@@ -95,7 +103,7 @@ export const useAuctionHaus = ({
         captainsReward,
         lastBidAmount,
         lastBidTokenId,
-      };
+      } as AuctionHausData;
     },
     { enabled: !!chainId && !!daoId && !!daoShamans }
   );

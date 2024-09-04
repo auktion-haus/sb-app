@@ -42,8 +42,6 @@ export const ProposalOverview = ({
     daoId: daoId
   });
 
-  console.log("proposals", proposals);
-
 
   return (
     <Wrapper>

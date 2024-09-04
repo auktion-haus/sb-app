@@ -8,7 +8,7 @@ import {
 import { createPublicClient, http } from "viem";
 import nounsAuctionHouseAbi from "../abis/nounsAuctionHouse.json";
 
-interface Auction {
+export interface Auction {
   nounId: number;
   amount: number;
   startTime: number;
@@ -22,9 +22,9 @@ export const useNounsAuctionHouse = ({
   daoId,
   auctionHouseAddress,
 }: {
-  chainId?: string;
-  daoId?: string;
-  auctionHouseAddress?: string;
+  chainId: string;
+  daoId: string;
+  auctionHouseAddress: string;
 }) => {
   const chain = getValidChainId(chainId);
 
