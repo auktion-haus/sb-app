@@ -63,10 +63,12 @@ export const YeeterDetails = ({
   yeeterId,
   daoId,
   daoChain,
+  auctionHausShaman
 }: {
   yeeterId: string;
   daoId: string;
   daoChain: ValidNetwork;
+  auctionHausShaman?: string;
 }) => {
   const { dao } = useDaoData({ daoId, daoChain });
 
@@ -87,14 +89,6 @@ export const YeeterDetails = ({
     isEnded: false,
     safeBalance: "0",
   };
-
-  const { auctionHausShaman } =
-    useAuctionHaus({
-      daoId,
-      yeeterShamanAddress: yeeterId,
-      chainId: daoChain,
-      daoShamans: dao?.shamen?.map((s) => s.shamanAddress),
-    });
 
   if (!metadata || !yeeter || !dao || !auctionHausShaman) {
     return;

@@ -1,10 +1,7 @@
 import { useQuery } from "react-query";
 import {
   CHAIN_OBJ,
-  DEFAULT_CHAIN_ID,
   RPC_URLS,
-  UNISWAP_URL,
-  SHAMAN_MODULE_NAME,
   getValidChainId,
   CURATOR_CONTRACTS,
 } from "../utils/constants";
@@ -75,7 +72,10 @@ export const useTreasury = ({
 
 
     },
-    { enabled: !!chainId && !!daoId && !!treasuryAddress }
+    { 
+      enabled: !!chainId && !!daoId && !!treasuryAddress,
+      refetchOnWindowFocus: false
+     }
   );
 
   return {

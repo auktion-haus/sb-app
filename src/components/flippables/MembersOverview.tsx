@@ -19,9 +19,8 @@ import { BigH1Blue } from "../Layout/Layout";
 import { formatShortDateTimeFromSeconds, formatValueTo, fromWei, truncateAddress, ZERO_ADDRESS } from "@daohaus/utils";
 
 import { Actions, DetailItem, DetailItemBg, DetailsContainer, SimpleRow, StyledDialogContent, Wrapper } from "./flipables.styles";
-import { useAuctionHaus } from "../../hooks/useAuctionHaus";
 import { useDaoMember, useProfile } from "@daohaus/moloch-v3-hooks";
-import { MolochV3Dao } from "@daohaus/moloch-v3-data";
+
 import { useMemo } from "react";
 import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 import { ExplorerLink } from "@daohaus/connect";

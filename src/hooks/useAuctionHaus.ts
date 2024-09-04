@@ -1,9 +1,7 @@
 import { useQuery } from "react-query";
 import {
   CHAIN_OBJ,
-  DEFAULT_CHAIN_ID,
   RPC_URLS,
-  UNISWAP_URL,
   SHAMAN_MODULE_NAME,
   getValidChainId,
 } from "../utils/constants";
@@ -105,7 +103,10 @@ export const useAuctionHaus = ({
         lastBidTokenId,
       } as AuctionHausData;
     },
-    { enabled: !!chainId && !!daoId && !!daoShamans }
+    { 
+      enabled: !!chainId && !!daoId && !!daoShamans && !!yeeterShamanAddress,
+      refetchOnWindowFocus: false
+    }
   );
 
   return {

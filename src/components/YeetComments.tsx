@@ -3,13 +3,12 @@ import "react-multi-carousel/lib/styles.css";
 import { useRecords } from "../hooks/useComments";
 import { useDHConnect } from "@daohaus/connect";
 import { ValidNetwork } from "@daohaus/keychain-utils";
-import { Card, Link, ParLg, ParSm, SingleColumnLayout } from "@daohaus/ui";
+import { Card, ParSm, SingleColumnLayout } from "@daohaus/ui";
 import styled from "styled-components";
 import { MemberProfileAvatar } from "@daohaus/moloch-v3-macro-ui";
 import { useDaoMember } from "@daohaus/moloch-v3-hooks";
 import ReactMarkdown from "react-markdown";
-import CommentButton from "./CommentButton";
-import { ButtonRouterLink } from "./ButtonRouterLink";
+
 
 export function formatDate(createdAt: number) {
   const date = new Date(createdAt * 1000);

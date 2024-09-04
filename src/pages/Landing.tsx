@@ -5,12 +5,9 @@ import {
   Avatar,
   Button,
   Card,
-  Dialog,
   DialogContent,
-  DialogTrigger,
   H1,
   ParMd,
-  SingleColumnLayout,
 } from "@daohaus/ui";
 import { Link as RouterLink } from "react-router-dom";
 import { APP_NAME, DEFAULT_CHAIN_ID, YEET24_REFERRER } from "../utils/constants";
@@ -23,13 +20,10 @@ import {
 
 // import { YeetMarquee } from "../components/YeetMarquee";
 
-import { useRagequits } from "../hooks/useRagequits";
 import { WideColumnLayout } from "../components/Layout/WideColumnLayout";
 import { DaoProfile, listDaos, ListDaosQueryResDaos } from "@daohaus/moloch-v3-data";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import { handleErrorMessage } from "@daohaus/utils";
-import { filter } from "@mdxeditor/editor";
-import { set } from "date-fns";
 
 const LinkButton = styled(RouterLink)`
   text-decoration: none;

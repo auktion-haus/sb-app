@@ -1,12 +1,7 @@
 import styled from "styled-components";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import {
-  Avatar,
-  Button,
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  Label,
+
   ParLg,
   ParMd,
   ParSm,
@@ -15,13 +10,11 @@ import {
 } from "@daohaus/ui";
 import { BigH1Blue } from "../Layout/Layout";
 
-import { CopyToClipboardButton } from "../CopyToClipboardButton";
 
-import { Actions, DetailItem, DetailsContainer, SimpleRow, StyledDialogContent, Wrapper } from "./flipables.styles";
-import { useDaoData, useDaoMembers, useProfile } from "@daohaus/moloch-v3-hooks";
+import { Actions, DetailItem, DetailsContainer,  Wrapper } from "./flipables.styles";
+import {  useDaoMembers, useProfile } from "@daohaus/moloch-v3-hooks";
 import { formatValueTo, fromWei, ZERO_ADDRESS } from "@daohaus/utils";
-import { useAuctionHaus } from "../../hooks/useAuctionHaus";
-import { MolochV3Dao } from "@daohaus/moloch-v3-data";
+
 import { useMemo } from "react";
 import { ButtonRouterLink } from "../ButtonRouterLink";
 

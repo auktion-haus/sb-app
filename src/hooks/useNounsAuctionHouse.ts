@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import {
   CHAIN_OBJ,
-  DEFAULT_CHAIN_ID,
   RPC_URLS,
   getValidChainId,
 } from "../utils/constants";
@@ -64,7 +63,10 @@ export const useNounsAuctionHouse = ({
         auction
       };
     },
-    { enabled: !!chainId && !!daoId }
+    { 
+      enabled: !!chainId && !!daoId && !!auctionHouseAddress,
+      refetchOnWindowFocus: false
+    }
   );
 
   return {

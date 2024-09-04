@@ -12,15 +12,9 @@ import {
   Link,
 } from "@daohaus/ui";
 import { BigH1Blue } from "../Layout/Layout";
-import {
-  formatLootForMin,
-  formatMinContribution,
-} from "../../utils/yeetDataHelpers";
-import { formatShortDateTimeFromSeconds } from "@daohaus/utils";
-import { CopyToClipboardButton } from "../CopyToClipboardButton";
-import { RiExternalLinkLine } from "react-icons/ri";
 
-import { Actions, DetailItem, DetailsContainer, SimpleRow, StyledDialogContent, Wrapper } from "./flipables.styles";
+
+import { Actions, DetailItem, DetailsContainer, Wrapper } from "./flipables.styles";
 import { MolochV3Dao } from "@daohaus/moloch-v3-data";
 import { useDaoProposals } from "@daohaus/moloch-v3-hooks";
 

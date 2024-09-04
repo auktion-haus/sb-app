@@ -48,7 +48,9 @@ export const useYeeter = ({
         multiplier
       };
     },
-    { enabled: !!chainId && !!daoId }
+    { enabled: !!chainId && !!daoId && !!shamanAddress,
+      refetchOnWindowFocus: false
+     }
   );
 
   return {

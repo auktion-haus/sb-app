@@ -6,7 +6,6 @@ import {
 } from "@daohaus/keychain-utils";
 import { useQuery } from "react-query";
 import { handleErrorMessage } from "@daohaus/utils";
-import { daoScopedQueryId, useCurrentDao } from "@daohaus/moloch-v3-hooks";
 // import { useCurrentDao } from '../contexts/CurrentDaoContext';
 // import { DaoQueryKeys, daoScopedQueryId } from '../utils';
 

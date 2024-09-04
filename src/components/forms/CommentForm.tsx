@@ -1,16 +1,13 @@
-import { useDHConnect } from "@daohaus/connect";
-import { ValidNetwork } from "@daohaus/keychain-utils";
+
 import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { YeeterItem } from "../../utils/types";
 import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
-import { DEFAULT_CHAIN_ID } from "../../utils/constants";
-import { Button, ParMd } from "@daohaus/ui";
+import { ParMd } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
-import { useCurrentDao, useDaoData } from "@daohaus/moloch-v3-hooks";
+import { useCurrentDao } from "@daohaus/moloch-v3-hooks";
 import { useCurrentYeeter } from "../../contexts/CurrentYeeterContext";
 import { YeetComments } from "../YeetComments";
 

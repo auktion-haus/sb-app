@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../legos/forms";
@@ -10,7 +10,6 @@ import {
   Button,
   Dialog,
   DialogContent,
-  DialogTrigger,
   Link,
   ParLg,
   ParMd,
@@ -18,8 +17,7 @@ import {
   SingleColumnLayout,
   Spinner,
 } from "@daohaus/ui";
-import { set } from "date-fns";
-import { ButtonRouterLink } from "../components/ButtonRouterLink";
+
 import { truncateAddress } from "@daohaus/utils";
 import { Link as RouterLink } from "react-router-dom";
 import { ValidNetwork, generateExplorerLink } from "@daohaus/keychain-utils";
