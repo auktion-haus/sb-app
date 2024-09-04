@@ -1,24 +1,13 @@
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import {
-  Avatar,
-  Button,
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  Label,
   ParLg,
   ParMd,
   ParSm,
 } from "@daohaus/ui";
 import { BigH1Blue } from "../Layout/Layout";
 
-import { formatShortDateTimeFromSeconds } from "@daohaus/utils";
-import { CopyToClipboardButton } from "../CopyToClipboardButton";
-
 import { Actions, DetailItem, DetailsContainer, SimpleRow, StyledDialogContent, Wrapper } from "./flipables.styles";
-import BuyButton from "../BuyButton";
 import { MolochV3Dao } from "@daohaus/moloch-v3-data";
-import { JoinForm } from "../forms/JoinForm";
 import { ButtonRouterLink } from "../ButtonRouterLink";
 
 

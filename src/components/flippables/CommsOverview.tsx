@@ -1,14 +1,11 @@
 import styled from "styled-components";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import {
-  Button,
   ParLg,
-  ParMd,
 } from "@daohaus/ui";
 import { BigH1Blue } from "../Layout/Layout";
 
 import { Actions, DetailItem, DetailsContainer, Wrapper } from "./flipables.styles";
-import BuyButton from "../BuyButton";
 import { MolochV3Dao } from "@daohaus/moloch-v3-data";
 import { YeetComments } from "../YeetComments";
 import { ButtonRouterLink } from "../ButtonRouterLink";

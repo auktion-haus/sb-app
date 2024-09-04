@@ -153,10 +153,7 @@ export function Yeet() {
               )}
               backComponent={() => (
                 <LastBidOverview
-                  yeeterId={shamanAddress}
-                  daoId={daoId}
-                  daoChain={daoChain}
-                  dao={dao}
+                  auctionHausData={auctionHausShamanData}
                 />
 
               )}
