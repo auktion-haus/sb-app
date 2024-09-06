@@ -22,7 +22,7 @@ export const useYeeter = ({
   const chain = getValidChainId(chainId);
 
   const { data, ...rest } = useQuery(
-    ["yeeter", { chainId, daoId }],
+    ["yeeter", { chainId, shamanAddress }],
     async () => {
       const publicClient = createPublicClient({
         chain: CHAIN_OBJ[chain],

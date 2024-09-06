@@ -28,7 +28,7 @@ export const useNounsAuctionHouse = ({
   const chain = getValidChainId(chainId);
 
   const { data, ...rest } = useQuery(
-    ["nouns-auction-house", { chainId, daoId }],
+    ["nouns-auction-house", { chainId, auctionHouseAddress }],
     async () => {
       const publicClient = createPublicClient({
         chain: CHAIN_OBJ[chain],

@@ -26,6 +26,8 @@ export const LastBidOverview = ({
   auctionHausData?: AuctionHausData
 }) => {
 
+  console.log("auctionHausData", auctionHausData);
+
   if (!auctionHausData) {
     return null;
   }
@@ -59,7 +61,7 @@ export const LastBidOverview = ({
               <ParMd>
                 {formatValueTo({
                   value: fromWei(auctionHausData.lastBidAmount?.toString() || "0"),
-                  decimals: 5,
+                  decimals: 18,
                   format: "numberShort",
                 })}
               </ParMd>
