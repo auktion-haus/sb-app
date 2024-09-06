@@ -48,7 +48,8 @@ export const useYeeter = ({
         functionName: "endTime",
       })) as string;
 
-      const isEnded = endTime < Date.now().toString();
+      console.log("endTime", endTime, (Date.now() / 1000));
+      const isEnded = Number(endTime) < (Date.now() / 1000);
       
       
       return {

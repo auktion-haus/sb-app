@@ -26,6 +26,7 @@ import { DaoProfile, listDaos, ListDaosQueryResDaos, MolochV3Dao } from "@daohau
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import { handleErrorMessage } from "@daohaus/utils";
 import { useYeeter } from "../hooks/useYeeter";
+import { useTreasury } from "../hooks/useTreasury";
 
 const LinkButton = styled(RouterLink)`
   text-decoration: none;
@@ -51,7 +52,7 @@ const DaoInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
 `;
 const DaoActions = styled.div`
   display: flex;
@@ -69,28 +70,29 @@ const HausAvatar = styled(Avatar)`
 const YeetCard = ({
   dao,
   daoChain,
-  idx,
-  daoProfileData,
+  daoProfile,
 }: {
   dao: MolochV3Dao;
   daoChain: ValidNetwork;
-  idx: number;
-  daoProfileData: DaoProfile[];
+  daoProfile: DaoProfile;
 
 }) => {
 
   const yeeterAddress = dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress; 
   const { isEnded } = useYeeter({ chainId: daoChain, daoId: dao.id, shamanAddress: yeeterAddress });
+  const { nounsBalance } = useTreasury({ chainId: daoChain, daoId: dao.id, treasuryAddress: dao.safeAddress });
+
 
   return (
 
     <DaoCard key={dao.id}>
-      <DaoInfo>
-        {daoProfileData[idx].avatarImg && <HausAvatar src={daoProfileData[idx].avatarImg} />}
+      {daoProfile && (<DaoInfo>
+        {daoProfile.avatarImg && <HausAvatar src={daoProfile.avatarImg} />}
         <ParMd>{dao.name}</ParMd>
-        <ParMd>{daoProfileData[idx].description}</ParMd>
+        <ParMd>{daoProfile.description}</ParMd>
         <ParMd>Members: {dao.activeMemberCount}</ParMd>
-      </DaoInfo>
+        <ParMd>Nouns: {nounsBalance?.toString()}</ParMd>
+      </DaoInfo>)}
       <DaoActions>
         {!isEnded ? (<LinkButton to={`/molochv3/${DEFAULT_CHAIN_ID}/${dao.id}/${yeeterAddress}/join`}>
           <Button variant="outline" size="md">
@@ -116,7 +118,6 @@ const Landing = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const { address, chainId } = useDHConnect();
-
 
   useEffect(() => {
     let shouldUpdate = true;
@@ -148,8 +149,10 @@ const Landing = () => {
               return dao.tags?.includes(APP_NAME);
             }).map((dao) => {
               if (dao.profile) {
+
                 const parsedProfile = JSON.parse(dao.profile[0].content);
-                setDaoProfileData([...daoProfileData, parsedProfile]);
+                console.log("parsedProfile", daoProfileData, parsedProfile);
+                setDaoProfileData((prevDaoProfileData) => [...prevDaoProfileData, parsedProfile]);
               }
               return dao;
             });
@@ -177,8 +180,8 @@ const Landing = () => {
   }, [chainId]);
 
   console.log("daoData", daoData);
-  console.log("daoProfileData", daoProfileData);
 
+  console.log("daoProfileData", daoProfileData);
 
 
   return (
@@ -242,13 +245,14 @@ const Landing = () => {
               <H1>Blocks</H1>
               {loading && <ParMd>Loading...</ParMd>}
               {daoData.map((dao, idx) => (
+                <>
                 <YeetCard
                   key={dao.id}
                   dao={dao as MolochV3Dao}
                   daoChain={chainId as ValidNetwork}
-                  idx={idx}
-                  daoProfileData={daoProfileData}
+                  daoProfile={daoProfileData[idx]}
                 />
+                </>
               ))}
             </SimpleCol>
           )}
