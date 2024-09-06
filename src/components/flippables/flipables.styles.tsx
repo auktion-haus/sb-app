@@ -1,4 +1,4 @@
-import { DialogContent } from "@daohaus/ui";
+import { DialogContent, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 
 
@@ -6,6 +6,13 @@ export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+    @media ${widthQuery.sm} {
+      h1 {
+        font-size: 5rem;
+        line-height: 3rem;
+      }
+    }
 `;
 
 
@@ -13,7 +20,9 @@ export const DetailsContainer = styled.div`
 export const DetailItem = styled.div`
   padding: 0.5rem;
   margin-bottom: 0.5rem;
-
+    @media ${widthQuery.sm} {
+      font-size: 50%;
+    }
 `;
 
 export const DetailItemBg = styled.div`
@@ -44,7 +53,7 @@ export const Actions = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
 
   position: absolute;
   bottom: 0;

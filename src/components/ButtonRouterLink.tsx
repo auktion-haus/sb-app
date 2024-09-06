@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button } from '@daohaus/ui';
+import { Button, widthQuery } from '@daohaus/ui';
 
 type ProfileLinkProps = {
   href?: string;
@@ -20,6 +20,13 @@ const StyledRouterLink = styled(RouterLink)`
   &:hover {
     text-decoration: none;
   }
+   @media ${widthQuery.sm} {
+      .lg {
+        font-size: 2rem;
+        line-height: 2rem;
+      }
+
+    }
 `;
 
 export const ButtonRouterLink = ({

@@ -4,7 +4,7 @@ import { YeeterItem } from "../../utils/types";
 import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
-import { ParMd } from "@daohaus/ui";
+import { ParMd, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
 import { useCurrentDao } from "@daohaus/moloch-v3-hooks";
@@ -36,9 +36,25 @@ const FormWrapper = styled.div`
     justify-content: center;
     gap: 1rem;
     padding: 2rem;
+       @media ${widthQuery.sm} {
+        .builder-inner-form {
+          margin-left: 10rem;
+          width: 35rem;
+        }
+
+
+    }
     `;
 
 const CommentsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    width: 100%;
+    `;
+
+const CommentsFormWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -65,7 +81,7 @@ export const CommentForm = () => {
 
 
     return (
-        <>
+        <CommentsFormWrapper>
             <FormWrapper>
                 <BackButtonWrapper>
                     <ButtonRouterLink
@@ -110,6 +126,6 @@ export const CommentForm = () => {
                     yeeterId={shamanAddress}
                 />
             </CommentsWrapper>
-        </>
+        </CommentsFormWrapper>
     )
 }

@@ -65,6 +65,7 @@ export const TokenOverview = ({
             JOIN
           </ButtonRouterLink>
 
+
         </Actions>
       </DetailsContainer>
 

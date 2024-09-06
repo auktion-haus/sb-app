@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import {
   ParLg,
+  widthQuery,
 } from "@daohaus/ui";
 import { BigH1Blue } from "../Layout/Layout";
 
@@ -13,10 +14,15 @@ import { ButtonRouterLink } from "../ButtonRouterLink";
 const CommentsWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  height: 300px;
+  height: 280px;
   width: 500px;
   background-color: rgba(255, 255, 255, 0.1);
  padding: .5rem;
+        @media ${widthQuery.sm} {
+        margin-left: 10%;
+        padding-left: 10%;
+        width: 80%;
+
 `;
 
 

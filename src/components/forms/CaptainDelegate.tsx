@@ -5,7 +5,7 @@ import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
 import { DEFAULT_CHAIN_ID } from "../../utils/constants";
-import { ParMd } from "@daohaus/ui";
+import { ParMd, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
 import { useCurrentDao } from "@daohaus/moloch-v3-hooks";
@@ -36,6 +36,11 @@ const FormWrapper = styled.div`
     justify-content: center;
     gap: 1rem;
     padding: 2rem;
+        @media ${widthQuery.sm} {
+        .builder-inner-form {
+          margin-left: 10rem;
+          width: 35rem;
+        }
     `;
 
 export const CaptainDelegateForm = () => {

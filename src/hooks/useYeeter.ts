@@ -41,11 +41,20 @@ export const useYeeter = ({
         abi: yeeterShamanAbi,
         functionName: "multiplier",
       })) as string;
+
+      const endTime = (await publicClient.readContract({
+        address: shamanAddress as `0x${string}`,
+        abi: yeeterShamanAbi,
+        functionName: "endTime",
+      })) as string;
+
+      const isEnded = endTime < Date.now().toString();
       
       
       return {
         minTribute,
-        multiplier
+        multiplier,
+        isEnded
       };
     },
     { enabled: !!chainId && !!daoId && !!shamanAddress,

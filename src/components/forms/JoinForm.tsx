@@ -5,7 +5,7 @@ import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
 import { DEFAULT_CHAIN_ID } from "../../utils/constants";
-import { ParLg, ParMd } from "@daohaus/ui";
+import { ParLg, ParMd, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
 import { useCurrentDao, useDaoData } from "@daohaus/moloch-v3-hooks";
@@ -18,6 +18,7 @@ const SuccessWrapper = styled.div`
   justify-content: center;
   gap: 1rem;
   padding: 2rem;
+
 `;
 
 const BackButtonWrapper = styled.div`
@@ -36,6 +37,12 @@ const FormWrapper = styled.div`
     justify-content: center;
     gap: 1rem;
     padding: 2rem;
+      @media ${widthQuery.sm} {
+       .builder-inner-form {
+         margin-left: 10rem;
+         width: 35rem;
+       }
+      }
     `;
 
 export const JoinForm = () => {
@@ -89,7 +96,12 @@ export const JoinForm = () => {
               },
             }}
           />
-
+          <ButtonRouterLink
+            disabled={true}
+            to={`/`}
+          >
+            JOIN W NOUN (SOON)
+          </ButtonRouterLink>
         </>
       )}
       {pollSuccess && (

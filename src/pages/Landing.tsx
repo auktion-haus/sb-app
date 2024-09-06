@@ -7,6 +7,7 @@ import {
   Card,
   DialogContent,
   H1,
+  ParLg,
   ParMd,
 } from "@daohaus/ui";
 import { Link as RouterLink } from "react-router-dom";
@@ -21,9 +22,10 @@ import {
 // import { YeetMarquee } from "../components/YeetMarquee";
 
 import { WideColumnLayout } from "../components/Layout/WideColumnLayout";
-import { DaoProfile, listDaos, ListDaosQueryResDaos } from "@daohaus/moloch-v3-data";
+import { DaoProfile, listDaos, ListDaosQueryResDaos, MolochV3Dao } from "@daohaus/moloch-v3-data";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import { handleErrorMessage } from "@daohaus/utils";
+import { useYeeter } from "../hooks/useYeeter";
 
 const LinkButton = styled(RouterLink)`
   text-decoration: none;
@@ -63,6 +65,49 @@ const HausAvatar = styled(Avatar)`
   width: 200px;
   height: 200px;
 `;
+
+const YeetCard = ({
+  dao,
+  daoChain,
+  idx,
+  daoProfileData,
+}: {
+  dao: MolochV3Dao;
+  daoChain: ValidNetwork;
+  idx: number;
+  daoProfileData: DaoProfile[];
+
+}) => {
+
+  const yeeterAddress = dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress; 
+  const { isEnded } = useYeeter({ chainId: daoChain, daoId: dao.id, shamanAddress: yeeterAddress });
+
+  return (
+
+    <DaoCard key={dao.id}>
+      <DaoInfo>
+        {daoProfileData[idx].avatarImg && <HausAvatar src={daoProfileData[idx].avatarImg} />}
+        <ParMd>{dao.name}</ParMd>
+        <ParMd>{daoProfileData[idx].description}</ParMd>
+        <ParMd>Members: {dao.activeMemberCount}</ParMd>
+      </DaoInfo>
+      <DaoActions>
+        {!isEnded ? (<LinkButton to={`/molochv3/${DEFAULT_CHAIN_ID}/${dao.id}/${yeeterAddress}/join`}>
+          <Button variant="outline" size="md">
+            YEET TO JOIN
+          </Button>
+        </LinkButton>) : (<ParLg>ENDED</ParLg>)}
+
+        <LinkButton to={`/molochv3/${DEFAULT_CHAIN_ID}/${dao.id}/${yeeterAddress}`}>
+          <Button variant="outline" size="md">
+            DASHBOARD
+          </Button>
+        </LinkButton>
+      </DaoActions>
+    </DaoCard>
+
+  );
+}
 
 const Landing = () => {
   const [daoData, setDaoData] = useState<(ListDaosQueryResDaos)>([]);
@@ -197,27 +242,13 @@ const Landing = () => {
               <H1>Blocks</H1>
               {loading && <ParMd>Loading...</ParMd>}
               {daoData.map((dao, idx) => (
-                <DaoCard key={dao.id}>
-                  <DaoInfo>
-                    {daoProfileData[idx].avatarImg && <HausAvatar src={daoProfileData[idx].avatarImg} />}
-                    <ParMd>{dao.name}</ParMd>
-                    <ParMd>{daoProfileData[idx].description}</ParMd>
-                    <ParMd>Members: {dao.activeMemberCount}</ParMd>
-                  </DaoInfo>
-                  <DaoActions>
-                    <LinkButton to={`/molochv3/${DEFAULT_CHAIN_ID}/${dao.id}/${dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress}/join`}>
-                      <Button variant="outline" size="md">
-                        YEET TO JOIN
-                      </Button>
-                    </LinkButton>
-
-                    <LinkButton to={`/molochv3/${DEFAULT_CHAIN_ID}/${dao.id}/${dao.shamen?.find(shaman => shaman.permissions == "2")?.shamanAddress}`}>
-                      <Button variant="outline" size="md">
-                        DASHBOARD
-                      </Button>
-                    </LinkButton>
-                  </DaoActions>
-                </DaoCard>
+                <YeetCard
+                  key={dao.id}
+                  dao={dao as MolochV3Dao}
+                  daoChain={chainId as ValidNetwork}
+                  idx={idx}
+                  daoProfileData={daoProfileData}
+                />
               ))}
             </SimpleCol>
           )}

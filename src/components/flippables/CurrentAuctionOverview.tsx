@@ -2,7 +2,6 @@ import { HAUS_NETWORK_DATA, ValidNetwork } from "@daohaus/keychain-utils";
 import {
 
   AddressDisplay,
-  Button,
 
   DataIndicator,
 
@@ -13,12 +12,11 @@ import {
 } from "@daohaus/ui";
 import { BigH1Blue } from "../Layout/Layout";
 import { Actions, DetailItem, DetailsContainer, Wrapper } from "./flipables.styles";
-import { useYeeter } from "../../hooks/useYeeter";
-import { useNounsAuctionHouse } from "../../hooks/useNounsAuctionHouse";
-import { CURATOR_CONTRACTS, NOUNS_URL } from "../../utils/constants";
-import { formatShortDateTimeFromSeconds, formatValueTo, fromWei, truncateAddress } from "@daohaus/utils";
+
+import { formatShortDateTimeFromSeconds, formatValueTo, fromWei } from "@daohaus/utils";
 import { useMemo } from "react";
 import { ButtonRouterLink } from "../ButtonRouterLink";
+import { NOUNS_URL } from "../../utils/constants";
 
 
 export const CurrentAuctionOverview = ({
@@ -69,13 +67,7 @@ export const CurrentAuctionOverview = ({
         </DetailItem>
 
         <Actions>
-          {memoizedAuction.endTime < Date.now() / 1000 ? (
-
-            <Link
-              href={`${NOUNS_URL[daoChain]}`} target="_blank" rel="noopener noreferrer"
-            >
-              VIEW
-            </Link>) :
+          {memoizedAuction.endTime > Date.now() / 1000 &&
             (<ButtonRouterLink
               to={`/molochv3/${daoChain}/${daoId}/${yeeterId}/bid`}
             >

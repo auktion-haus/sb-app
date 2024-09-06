@@ -1,6 +1,6 @@
 import { ValidNetwork } from '@daohaus/keychain-utils';
 import { MolochV3Dao } from '@daohaus/moloch-v3-data';
-import { ProfileAvatar, Tooltip } from '@daohaus/ui';
+import { Tooltip } from '@daohaus/ui';
 import React from 'react';
 import styled from 'styled-components';
 import { useTreasury } from '../../hooks/useTreasury';
