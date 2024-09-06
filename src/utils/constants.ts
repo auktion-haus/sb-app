@@ -116,6 +116,7 @@ export const supportedNetworks = import.meta.env.DEV
       "0x1": HAUS_NETWORK_DATA["0x1"],
     }
   : {
+      "0xaa36a7": HAUS_NETWORK_DATA["0xaa36a7"],
       "0x2105": HAUS_NETWORK_DATA["0x1"],
     };
 
