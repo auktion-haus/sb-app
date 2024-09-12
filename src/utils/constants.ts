@@ -10,6 +10,8 @@ import {
 } from "@daohaus/keychain-utils";
 
 export const APP_NAME = "AUKTION HAUS";
+export const VERSION = "v0.1.0";
+
 
 export const YEET24_REFERRER = "DHYeet24ShamanSummoner.5";
 export const SHAMAN_MODULE_NAME = "AuctionHausShamanModule";
@@ -31,8 +33,8 @@ export const CURATOR_CONTRACTS: KeychainList = {
   },
   AUCTION_HAUS_SINGLETON: {
     "0xaa36a7": "0x73EE3aEF94215C360C246fe6e3BFcdB129d091B6",
-    "0x1": "",
-  }, // todo
+    "0x1": "0xc6FEf20E99F1A6d4A30cD12E7581EE8B5336278a",
+  }, 
   GOV_LOOT_SINGLETON: {
     "0xaa36a7": "0x8a4a9e36106ee290811b89e06e2fafe913507965",
     "0x2105": "0x59a7C71221d05e30b9d7981AB83f0A1700e51Af8",
@@ -40,7 +42,7 @@ export const CURATOR_CONTRACTS: KeychainList = {
   GNOSIS_SAFE_PROXY_FACTORY: {
     "0xaa36a7": "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc",
     "0x2105": "0xC22834581EbC8527d974F8a1c97E1bEA4EF910BC",
-    "0x1": ""
+    "0x1": "0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2"
   },
   GNOSIS_SAFE_MASTER_COPY: {
     "0xaa36a7": "0x69f4d1788e39c87893c980c06edf4b7f686e2938",
@@ -63,12 +65,12 @@ export const CURATOR_CONTRACTS: KeychainList = {
   NOUNS_AUCTION_HOUSE: {
     "0xaa36a7": "0xc0af40e8932ad93ed3237dd0c3fe1efd698c1efe",
     "0x2105": "",
-    "0x1": ""
+    "0x1": "0x2fdadd994b1edefd19744f00d1afe85045a31561"
   },
   NOUNS_TOKEN: {
     "0xaa36a7": "0x54BC3fC3977785922336084315318FA3387EEC17",
     "0x2105": "",
-    "0x1": ""
+    "0x1": "0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03"
   },
 };
 
@@ -132,7 +134,7 @@ export const DEFAULT_CHAIN_ID_DEV = "0xaa36a7";
 export const DEFAULT_CHAIN_ID_PROD = "0x1";
 export const DEFAULT_CHAIN_ID = import.meta.env.DEV
   ? DEFAULT_CHAIN_ID_DEV
-  : DEFAULT_CHAIN_ID_DEV; // DEFAULT_CHAIN_ID_PROD;
+  : DEFAULT_CHAIN_ID_PROD;
 
 export const CHAIN_OBJ: {
   [key: string]: Chain;
@@ -185,8 +187,8 @@ export const DEFAULT_YEETER_VALUES_PROD = {
 export const DEFAULT_DURATION_PROD = (30*24) * 60 * 60; // 30 days
 export const DEFAULT_DURATION_DEV = (7*24) * 60 * 60; // 7 days
 
-const STATUS_WINDOW_LENGTH_DEV = 3 * 60; // 3 mins
 const STATUS_WINDOW_LENGTH_PROD = 2 * 60 * 60; // 2 hrs
+const STATUS_WINDOW_LENGTH_DEV = 3 * 60; // 3 mins
 
 export const DEFAULT_MEME_YEETER_VALUES = {
   poolFee: "10000", // 1%
@@ -225,11 +227,11 @@ export const DEFAULT_TARGET_DAO = import.meta.env.DEV
 
 export const DEFAULT_YEETER_VALUES = import.meta.env.DEV
   ? DEFAULT_YEETER_VALUES_DEV
-  : DEFAULT_YEETER_VALUES_DEV; // DEFAULT_YEETER_VALUES_PROD;
+  : DEFAULT_YEETER_VALUES_PROD;
 
 export const DEFAULT_DURATION = import.meta.env.DEV
   ? DEFAULT_DURATION_DEV
-  : DEFAULT_DURATION_DEV; //DEFAULT_DURATION_PROD;
+  : DEFAULT_DURATION_PROD;
 
 export const STATUS_WINDOW_LENGTH = import.meta.env.DEV
   ? STATUS_WINDOW_LENGTH_DEV
@@ -237,4 +239,4 @@ export const STATUS_WINDOW_LENGTH = import.meta.env.DEV
 
 export const DEFAULT_SUMMON_VALUES = import.meta.env.DEV
   ? DEFAULT_SUMMON_VALUES_DEV
-  : DEFAULT_SUMMON_VALUES_DEV; // DEFAULT_SUMMON_VALUES_PROD;
+  : DEFAULT_SUMMON_VALUES_PROD;

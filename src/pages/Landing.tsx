@@ -11,7 +11,7 @@ import {
   ParMd,
 } from "@daohaus/ui";
 import { Link as RouterLink } from "react-router-dom";
-import { APP_NAME, DEFAULT_CHAIN_ID, YEET24_REFERRER } from "../utils/constants";
+import { APP_NAME, DEFAULT_CHAIN_ID, VERSION, YEET24_REFERRER } from "../utils/constants";
 import {
   BigH1,
   SimpleCol,
@@ -146,7 +146,7 @@ const Landing = () => {
           // TODO: can this be updated in the query?
           const filteredDaos = query.items
             .filter((dao) => {
-              return dao.tags?.includes(APP_NAME);
+              return dao.tags?.includes(`${APP_NAME}${VERSION}`);
             }).map((dao) => {
               if (dao.profile) {
 

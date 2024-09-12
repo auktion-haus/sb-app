@@ -40,6 +40,7 @@ import {
   LOOT_NAME_POSTFIX,
   DEFAULT_DURATION,
   APP_NAME,
+  VERSION,
 } from "./constants";
 import { createEthersContract } from "@daohaus/tx-builder";
 import { BigNumber, ethers } from "ethers";
@@ -502,7 +503,7 @@ const metadataConfigTX = (
     description: description || "",
     avatarImg: image || "",
     title: `${daoName} tst`,
-    tags: [APP_NAME, "Incarnation"],
+    tags: [`${APP_NAME}${VERSION}`, "Incarnation"],
     authorAddress: memberAddress,
     // parentId: 0
   };
