@@ -4,7 +4,6 @@ import { YeeterItem } from "../../utils/types";
 import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
-import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 import { ParLg, ParMd, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
@@ -84,7 +83,7 @@ export const JoinForm = () => {
           <FormBuilder
             form={APP_FORM.YEET_FORM}
             customFields={AppFieldLookup}
-            targetNetwork={DEFAULT_CHAIN_ID}
+            targetNetwork={daoChain}
             submitButtonText="JOIN"
             lifeCycleFns={{
               onPollSuccess: (result) => {

@@ -1,12 +1,6 @@
 import styled from "styled-components";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import {
-  Avatar,
-  Button,
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  Label,
   ParLg,
   ParMd,
   ProfileAvatar,
@@ -16,14 +10,13 @@ import {
 } from "@daohaus/ui";
 import { BigH1Blue } from "../Layout/Layout";
 
-import { formatShortDateTimeFromSeconds, formatValueTo, fromWei, truncateAddress, ZERO_ADDRESS } from "@daohaus/utils";
+import { formatShortDateTimeFromSeconds, formatValueTo, fromWei, ZERO_ADDRESS } from "@daohaus/utils";
 
-import { Actions, DetailItem, DetailItemBg, DetailsContainer, SimpleRow, StyledDialogContent, Wrapper } from "./flipables.styles";
-import { useDaoMember, useProfile } from "@daohaus/moloch-v3-hooks";
+import { DetailItem, DetailItemBg, DetailsContainer,  Wrapper } from "./flipables.styles";
+import { useProfile } from "@daohaus/moloch-v3-hooks";
 
 import { useMemo } from "react";
-import { DEFAULT_CHAIN_ID } from "../../utils/constants";
-import { ExplorerLink } from "@daohaus/connect";
+import { ExplorerLink, useDHConnect } from "@daohaus/connect";
 
 const TooltipContent = styled.div`
   background-color: ${({ theme }) => theme.info.step12};
@@ -40,6 +33,8 @@ export const MembersOverview = ({
   captain?: string;
   captainsReward?: string;
 }) => {
+
+  const { chainId } = useDHConnect();
 
   if (!captain || !captainsReward) {
     return null;
@@ -64,7 +59,7 @@ export const MembersOverview = ({
         <DetailItemBg>
           <ParLg>Captain:</ParLg>
           <ProfileAvatar size="xl" address={memoizedCaptainProfile?.address} src={memoizedCaptainProfile.avatar || ""} />
-          <ExplorerLink chainId={DEFAULT_CHAIN_ID} address={memoizedCaptainProfile?.address} />
+          <ExplorerLink chainId={chainId} address={memoizedCaptainProfile?.address} />
 
 
 

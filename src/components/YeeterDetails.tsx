@@ -1,17 +1,10 @@
 import styled from "styled-components";
-import { DEFAULT_CHAIN_ID } from "../utils/constants";
+
 import { ValidNetwork } from "@daohaus/keychain-utils";
-import { Avatar, Card, Label, ParLg, ParMd } from "@daohaus/ui";
-import {
-  formatMinContribution,
-  formatTimeRemainingShort,
-  formatTimeUntilPresale,
-  getCampaignStatus,
-} from "../utils/yeetDataHelpers";
-import { YeetGoalProgress } from "./YeetGoalProgress";
-import { formatValueTo, fromWei } from "@daohaus/utils";
+import { Avatar, Label, ParLg } from "@daohaus/ui";
+
 import { BigH1 } from "./Layout/Layout";
-import { useAuctionHaus } from "../hooks/useAuctionHaus";
+
 import { useDaoData } from "@daohaus/moloch-v3-hooks";
 
 const Container = styled.div`

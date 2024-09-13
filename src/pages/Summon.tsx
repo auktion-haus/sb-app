@@ -21,7 +21,6 @@ import {
 import { truncateAddress } from "@daohaus/utils";
 import { Link as RouterLink } from "react-router-dom";
 import { ValidNetwork, generateExplorerLink } from "@daohaus/keychain-utils";
-import { DEFAULT_CHAIN_ID } from "../utils/constants";
 
 const StyledRouterLink = styled(RouterLink)`
   text-decoration: none;
@@ -103,7 +102,7 @@ const Summon = () => {
         <FormBuilder
           form={APP_FORM.SUMMON_AUCTIONHAUS}
           customFields={AppFieldLookup}
-          targetNetwork={DEFAULT_CHAIN_ID}
+          targetNetwork={chainId}
           submitButtonText="Summon Token"
           lifeCycleFns={{
             onPollSuccess: (result) => {

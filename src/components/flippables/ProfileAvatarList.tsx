@@ -1,10 +1,9 @@
-import { ExplorerLink } from '@daohaus/connect';
+import { ExplorerLink, useDHConnect } from '@daohaus/connect';
 import { useDaoMembers } from '@daohaus/moloch-v3-hooks';
 import { ProfileAvatar, Tooltip } from '@daohaus/ui';
 import { formatValueTo, fromWei, truncateAddress } from '@daohaus/utils';
 import React from 'react';
 import styled from 'styled-components';
-import { DEFAULT_CHAIN_ID } from '../../utils/constants';
 
 const AvatarListWrapper = styled.div`
   flex: 1;
@@ -41,6 +40,8 @@ const TooltipContent = styled.div`
 
 const ProfileAvatarList: React.FC = () => {
 
+  const { chainId } = useDHConnect();
+
   const { members } = useDaoMembers();
 
   return (
@@ -52,7 +53,7 @@ const ProfileAvatarList: React.FC = () => {
             value: fromWei(member.shares.toString()),
             decimals: 2,
             format: "numberShort",
-          })}<ExplorerLink chainId={DEFAULT_CHAIN_ID} address={member.memberAddress} /></TooltipContent>)} 
+          })}<ExplorerLink chainId={chainId} address={member.memberAddress} /></TooltipContent>)} 
           triggerEl={(<ProfileAvatar size='md' address={member.memberAddress} alt="thing" />)} />
 
 

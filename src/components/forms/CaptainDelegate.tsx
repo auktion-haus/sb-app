@@ -4,7 +4,6 @@ import { YeeterItem } from "../../utils/types";
 import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
-import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 import { ParMd, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
@@ -75,7 +74,7 @@ export const CaptainDelegateForm = () => {
                     <FormBuilder
                         form={APP_FORM.CAPTAIN_DELEGATE_FORM}
                         customFields={AppFieldLookup}
-                        targetNetwork={DEFAULT_CHAIN_ID}
+                        targetNetwork={daoChain}
                         submitButtonText="DELEGATE"
                         lifeCycleFns={{
                             onPollSuccess: (result) => {

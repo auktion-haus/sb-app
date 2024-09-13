@@ -4,7 +4,6 @@ import { YeeterItem } from "../../utils/types";
 import { FormBuilder } from "@daohaus/form-builder";
 import { APP_FORM } from "../../legos/forms";
 import { AppFieldLookup } from "../../legos/fieldConfig";
-import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 import { Button, ParMd, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 import { ButtonRouterLink } from "../ButtonRouterLink";
@@ -75,7 +74,7 @@ export const CaptainNewBidForm = () => {
           <FormBuilder
             form={APP_FORM.CAPTAIN_NEW_BID_FORM}
             customFields={AppFieldLookup}
-            targetNetwork={DEFAULT_CHAIN_ID}
+            targetNetwork={daoChain}
             submitButtonText="BID"
             lifeCycleFns={{
               onPollSuccess: (result) => {

@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import {
   CHAIN_OBJ,
-  DEFAULT_CHAIN_ID,
   RPC_URLS,
   getValidChainId,
 } from "../utils/constants";
