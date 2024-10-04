@@ -65,7 +65,7 @@ export const CURATOR_CONTRACTS: KeychainList = {
   NOUNS_AUCTION_HOUSE: {
     "0xaa36a7": "0xc0af40e8932ad93ed3237dd0c3fe1efd698c1efe",
     "0x2105": "",
-    "0x1": "0x2fdadd994b1edefd19744f00d1afe85045a31561"
+    "0x1": "0x830BD73E4184ceF73443C15111a1DF14e495C706"
   },
   NOUNS_TOKEN: {
     "0xaa36a7": "0x54BC3fC3977785922336084315318FA3387EEC17",
@@ -119,7 +119,7 @@ export const supportedNetworks = import.meta.env.DEV
     }
   : {
       "0xaa36a7": HAUS_NETWORK_DATA["0xaa36a7"],
-      "0x2105": HAUS_NETWORK_DATA["0x1"],
+      "0x1": HAUS_NETWORK_DATA["0x1"],
     };
 
 export const targetNetworks: Keychain<NetworkConfig> = {
