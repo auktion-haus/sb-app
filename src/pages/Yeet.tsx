@@ -114,8 +114,7 @@ export function Yeet() {
             <FlippableCard
               frontComponentLeft={() => (
                 <CardImage src={
-                  //dao?.avatarImg 
-                  "https://api.cloudnouns.com/v1/pfp" || "https://api.cloudnouns.com/v1/pfp"} alt={"Dao Avatar"} />
+                  dao?.avatarImg || "https://api.cloudnouns.com/v1/pfp"} alt={"Dao Avatar"} />
               )}
               frontComponentRight={() => (
                 <TokenOverview
