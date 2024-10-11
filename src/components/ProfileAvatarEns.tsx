@@ -30,7 +30,7 @@ export const ProfileAvatarEns = ({
     })
 
     return (
-        <Tooltip content={(<TooltipContent>{profile.ens || truncateAddress(address)} {formatValueTo({
+        <Tooltip content={(<TooltipContent>{profile?.ens || truncateAddress(address)} {formatValueTo({
             value: fromWei(member.shares.toString()),
             decimals: 2,
             format: "numberShort",
