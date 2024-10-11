@@ -17,6 +17,7 @@ import { formatValueTo, fromWei, ZERO_ADDRESS } from "@daohaus/utils";
 
 import { useMemo } from "react";
 import { ButtonRouterLink } from "../ButtonRouterLink";
+import { ProfileAvatarEns } from "../ProfileAvatarEns";
 
 
 const LeaderBoard = styled.div`
@@ -75,12 +76,13 @@ export const LeaderBoardOverview = ({
           {members.sort((a, b) => Number(b.shares) - Number(a.shares)).slice(0, 5)
           .map((member, index) => (
             <LeaderBoardItem key={index}>
-              <ParSm>{formatValueTo({
+              <ParSm>{formatValueTo({ 
                 value: fromWei(member.shares.toString()),
                 decimals: 2,
                 format: "numberShort",
               })}</ParSm>
-              {/* <ProfileAvatar size="sm" address={member.memberAddress} src={""} /> */}
+
+              <ProfileAvatarEns address={member.memberAddress} chainId={daoChain} member={member} />
               <AddressDisplay address={member.memberAddress} truncate copy />
             </LeaderBoardItem>
           ))

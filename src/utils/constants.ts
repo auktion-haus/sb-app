@@ -133,7 +133,7 @@ export const targetNetworks: Keychain<NetworkConfig> = {
 export const DEFAULT_CHAIN_ID_DEV = "0xaa36a7";
 export const DEFAULT_CHAIN_ID_PROD = "0x1";
 export const DEFAULT_CHAIN_ID = import.meta.env.DEV
-  ? DEFAULT_CHAIN_ID_DEV
+  ? DEFAULT_CHAIN_ID_PROD
   : DEFAULT_CHAIN_ID_PROD;
 
 export const CHAIN_OBJ: {
@@ -222,7 +222,7 @@ export const DEFAULT_TARGET_DAO_DEV = {}
 export const DEFAULT_TARGET_DAO_PROD = {}
 
 export const DEFAULT_TARGET_DAO = import.meta.env.DEV
-  ? DEFAULT_TARGET_DAO_DEV
+  ? DEFAULT_TARGET_DAO_PROD
   : DEFAULT_TARGET_DAO_PROD;
 
 export const DEFAULT_YEETER_VALUES = import.meta.env.DEV

@@ -4,6 +4,8 @@ import { ProfileAvatar, Tooltip } from '@daohaus/ui';
 import { formatValueTo, fromWei, truncateAddress } from '@daohaus/utils';
 import React from 'react';
 import styled from 'styled-components';
+import { ProfileAvatarEns } from '../ProfileAvatarEns';
+import { ValidNetwork } from '@daohaus/keychain-utils';
 
 const AvatarListWrapper = styled.div`
   flex: 1;
@@ -30,12 +32,6 @@ const AvatarWrapper = styled.div`
   }
 `;
 
-const TooltipContent = styled.div`
-  background-color: ${({ theme }) => theme.info.step12};
-  color: ${({ theme }) => theme.info.step1};
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-`;
 
 
 const ProfileAvatarList: React.FC = () => {
@@ -49,12 +45,7 @@ const ProfileAvatarList: React.FC = () => {
       {members.length === 0 && <p>None yet</p>}
       {members.map((member, index) => (
         <AvatarWrapper key={index}>
-          <Tooltip content={(<TooltipContent>{truncateAddress(member.memberAddress)} {formatValueTo({
-            value: fromWei(member.shares.toString()),
-            decimals: 2,
-            format: "numberShort",
-          })}<ExplorerLink chainId={chainId} address={member.memberAddress} /></TooltipContent>)} 
-          triggerEl={(<ProfileAvatar size='md' address={member.memberAddress} alt="thing" />)} />
+          <ProfileAvatarEns address={member.memberAddress} chainId={chainId as ValidNetwork} member={member} />
 
 
         </AvatarWrapper>
