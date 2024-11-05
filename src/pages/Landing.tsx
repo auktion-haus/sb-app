@@ -145,9 +145,10 @@ const Landing = () => {
           // filter for tag name here
           // TODO: can this be updated in the query?
           const filteredDaos = query.items
-            .filter((dao) => {
-              return dao.tags?.includes(`${APP_NAME}${VERSION}`);
-            }).map((dao) => {
+            // .filter((dao) => {
+            //   return dao.tags?.includes(`${APP_NAME}${VERSION}`);
+            // })
+            .map((dao) => {
               if (dao.profile) {
 
                 const parsedProfile = JSON.parse(dao.profile[0].content);

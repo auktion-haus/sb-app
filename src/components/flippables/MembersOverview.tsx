@@ -29,9 +29,11 @@ const TooltipContent = styled.div`
 export const MembersOverview = ({
   captain,
   captainsReward,
+  captainMaxBid,
 }: {
   captain?: string;
   captainsReward?: string;
+  captainMaxBid?: string;
 }) => {
 
   const { chainId } = useDHConnect();
@@ -73,6 +75,16 @@ export const MembersOverview = ({
 
           <ParSm>{formatValueTo({
             value: fromWei(captainsReward?.toString() || "0"),
+            decimals: 2,
+            format: "numberShort",
+          })}</ParSm>
+        </DetailItem>
+        <DetailItem>
+          <Tooltip content={(<TooltipContent>Captain maximum bid (after this it will be the minimum) </TooltipContent>)} triggerEl={<ParMd>Captains Max Bid:</ParMd>} />
+
+
+          <ParSm>{formatValueTo({
+            value: fromWei(captainMaxBid?.toString() || "0"),
             decimals: 2,
             format: "numberShort",
           })}</ParSm>
