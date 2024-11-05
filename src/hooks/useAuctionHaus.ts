@@ -79,11 +79,17 @@ export const useAuctionHaus = ({
             functionName: "captainsReward",
           })) as string;
 
-          captainMaxBid = (await publicClient.readContract({
-            address: shamanAddresses[i] as `0x${string}`,
-            abi: auctionHausShamanAbi,
-            functionName: "captainMaxBid",
-          })) as string;
+          try {
+            captainMaxBid = (await publicClient.readContract({
+              address: shamanAddresses[i] as `0x${string}`,
+              abi: auctionHausShamanAbi,
+              functionName: "captainMaxBid",
+            })) as string;
+          } catch (e) {
+            console.log("captainMaxBid error", e);
+            captainMaxBid = "0";
+          }
+          
 
           lastBidAmount = (await publicClient.readContract({
             address: shamanAddresses[i] as `0x${string}`,
