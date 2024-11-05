@@ -73,7 +73,6 @@ export function Yeet() {
   if (!dao) return null;
 
 
-
   const membersMock = [
     "https://hackmd.io/_uploads/r1MAfIUjR.png",
     "https://hackmd.io/_uploads/r1xJm8UoA.png",
@@ -167,6 +166,7 @@ export function Yeet() {
                 <MembersOverview
                   captain={auctionHausShamanData?.captain}
                   captainsReward={auctionHausShamanData?.captainsReward}
+                  captainMaxBid={auctionHausShamanData?.captainMaxBid}
                 />
 
               )}
