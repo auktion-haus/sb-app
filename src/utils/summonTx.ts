@@ -161,9 +161,11 @@ const assembleLootTokenParams = ({
   formValues: Record<string, unknown>;
 }) => {
   // use shares token singleton for loot
-  const lootSingleton = CONTRACT_KEYCHAINS["SHARES_SINGLETON"][chainId]; // CURATOR_CONTRACTS["GOV_LOOT_SINGLETON"][chainId];
+  const lootSingleton = CURATOR_CONTRACTS["DH_TOKEN_SINGLETON"][chainId]; // CURATOR_CONTRACTS["GOV_LOOT_SINGLETON"][chainId];
   const daoName = formValues["daoName"] as string;
   const tokenSymbol = formValues["tokenSymbol"] as string;
+
+  console.log(">>>>> assembleLootTokenParams", lootSingleton, daoName, tokenSymbol);
 
   if (!lootSingleton) {
     console.log("ERROR: passed args");
@@ -196,7 +198,7 @@ const assembleShareTokenParams = ({
   formValues: Record<string, unknown>;
   memberAddress: EthAddress;
 }) => {
-  const shareSingleton = CONTRACT_KEYCHAINS["SHARES_SINGLETON"][chainId];
+  const shareSingleton = CURATOR_CONTRACTS["DH_TOKEN_SINGLETON"][chainId]; // CONTRACT_KEYCHAINS["SHARES_SINGLETON"][chainId];
   const daoName = formValues["daoName"] as string;
   const tokenSymbol = formValues["tokenSymbol"] as string;
 
@@ -228,17 +230,18 @@ export const assembleAuctionHausShamanParams = ({
   const auctionHausShamanSingleton =
     CURATOR_CONTRACTS["AUCTION_HAUS_SINGLETON"][chainId];
 
-  const { startDate, captain, captainReward } = formValues;
+  const { startDate, captain, captainReward, captainMaxBid } = formValues;
 
   const startDateTime = startDate as number;
   const endDateTime = (startDateTime + DEFAULT_DURATION)
   const nounsAuctionHouse = CURATOR_CONTRACTS["NOUNS_AUCTION_HOUSE"][chainId];
 
-  if (!endDateTime || !captain || !captainReward || !nounsAuctionHouse) {
+  if (!endDateTime || !captain || !captainReward || !captainMaxBid || !nounsAuctionHouse) {
     console.log("assembleAuctionHausShamanParams ERROR:", {
       endDateTime,
       captain,
       captainReward,
+      captainMaxBid,
       nounsAuctionHouse
     });
     return {
@@ -262,13 +265,15 @@ export const assembleAuctionHausShamanParams = ({
   // uint256 _endTime,
   // address _captain,
   // uint256 _captainsReward,
+  // uint192 _captainMaxBid
   // address _auctionHouse
   const auctionHausShamanParams = encodeValues(
-    ["uint256", "address", "uint256", "address"],
+    ["uint256", "address", "uint256", "uint192", "address"],
     [
       endDateTime.toString(),
       captain as string,
       captainReward as string,
+      captainMaxBid as string,
       nounsAuctionHouse as string,
     ]
   );

@@ -244,10 +244,18 @@ export const APP_FORM: Record<string, CustomFormLego> = {
       {
         id: "captainReward",
         type: "toWeiInput",
-        label: "Captain Reward",
+        label: "Captain Reward (shares)",
         placeholder: "69,420",
         expectType: "number",
         info: "The reward in shares a captain gets for participation in auctions.",
+      },
+      {
+        id: "captainMaxBid",
+        type: "toWeiInput",
+        label: "Captain Max Bid (eth)",
+        placeholder: "5",
+        expectType: "number",
+        info: "The maximum bid in eth a captain can make.",
       },
 
       APP_FIELD.DISCLAIMER_CHECKBOX_FIELD,
